@@ -3,18 +3,15 @@
        "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 <tiles-definitions>
-  <definition name="common" template="/WEB-INF/layout/classic.jsp">
+  <definition name="common" template="/WEB-INF/layout/common/classic.jsp">
     <put-attribute name="title" value="Tiles tutorial homepage" />
-    <put-attribute name="footer" value="/WEB-INF/layout/footer.jsp" />
+    <put-attribute name="nav" value="/WEB-INF/layout/common/nav.jsp"></put-attribute>
+    <put-attribute name="footer" value="/WEB-INF/layout/common/footer.jsp" />
   </definition>
   
   <definition name="index" extends="common">
     <put-attribute name="title" value="Spring Home" />
     <put-attribute name="body" value="/WEB-INF/views/index.jsp" />
   </definition>
-  
-  <definition name="users" extends="common">
-    <put-attribute name="title" value="Users" />
-    <put-attribute name="body" value="/WEB-INF/views/users.jsp" />
-  </definition>
+ 
 </tiles-definitions>
