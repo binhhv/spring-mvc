@@ -5,7 +5,8 @@
 <tiles-definitions>
   <definition name="common" template="/WEB-INF/layout/common/classic.jsp">
     <put-attribute name="title" value="Tiles tutorial homepage" />
-    <put-attribute name="nav" value="/WEB-INF/layout/common/nav.jsp"></put-attribute>
+    <put-attribute name="menu" value="/WEB-INF/layout/common/menu.jsp" />
+    <put-attribute name="nav" value="/WEB-INF/layout/common/nav.jsp" />
     <put-attribute name="footer" value="/WEB-INF/layout/common/footer.jsp" />
   </definition>
   
