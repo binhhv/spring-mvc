@@ -5,6 +5,11 @@ import java.util.List;
 
 public class WebContants {
 
+	//session login fail
+	public static final String LAST_USERNAME_KEY = "LAST_USERNAME";
+	
+	
+	
 	public final static String MODEL_APP_CONTEXT = "APP_CONTEXT";
 	
 	
@@ -27,6 +32,16 @@ public class WebContants {
 	{
 		add("resources/common/js/gm-bacsic.js");
 		add("resources/common/js/gm-common.js");
+	}};
+	
+	public final static List<String> LOGIN_CSS = new ArrayList<String>(){/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+
+	{
+		
+		add("resources/common/css/gm-login.css");
 	}};
 	
 }
