@@ -60,7 +60,7 @@
 		<location>/errors/404.html</location>
 	</error-page>
 	<session-config>
-		<session-timeout>2</session-timeout>
+		<session-timeout>20</session-timeout>
 	</session-config>
 	<!-- <filter>
 		<filter-name>SessionTimeoutFilter</filter-name>

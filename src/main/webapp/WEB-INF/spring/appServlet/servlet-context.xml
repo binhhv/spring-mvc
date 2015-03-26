@@ -29,6 +29,6 @@
 			value="org.springframework.web.servlet.view.tiles3.TilesView" />
 	</beans:bean>
 	
-	<context:component-scan base-package="com.binhhv.controller" />
+	<context:component-scan base-package="com.binhhv" />
 	
 </beans:beans>

@@ -7,16 +7,18 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "users")
 public class User {
 	@Id
 	@Column
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
-	@Column
+	@Column(nullable = false, unique = true)
 	private String username;
-	@Column
+	@Column(nullable = false, unique = true)
 	private String email;
 	@Column
 	private String password;
@@ -31,7 +33,7 @@ public class User {
 	@Column
 	private Date updated_at;
 	
-	public User(int id, String username, String email, String password,
+	/*public User(int id, String username, String email, String password,
 			String confirm_code, int confirmed, int status, Date created_at,
 			Date updated_at) {
 		super();
@@ -44,7 +46,7 @@ public class User {
 		this.status = status;
 		this.created_at = created_at;
 		this.updated_at = updated_at;
-	}
+	}*/
 	public int getId() {
 		return id;
 	}

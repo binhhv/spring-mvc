@@ -19,7 +19,11 @@
 		<put-attribute name="title" value="Login" />
 		<put-attribute name="body" value="/WEB-INF/views/login.jsp" />
 	</definition>
-
+	
+	<definition name="register" extends="common">
+		<put-attribute name="title" value="Register" />
+		<put-attribute name="body" value="/WEB-INF/views/register.jsp" />
+	</definition>
 
 	<definition name="404" extends="common">
 		<put-attribute name="title" value="Page not found" />
