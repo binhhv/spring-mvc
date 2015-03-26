@@ -1,5 +1,8 @@
 @CHARSET "ISO-8859-1";
-.menu-title{
-	float:left;
-	width:100%;
+.profile-name{
+	color:white;
+	font-style: normal;
+	font-weight: bold;
 }
+.error-image-404 img { width: 100%;}
+.error-image-404 {display: table-cell;vertical-align: middle}

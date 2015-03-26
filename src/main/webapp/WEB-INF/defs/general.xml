@@ -3,21 +3,26 @@
        "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 <tiles-definitions>
-  <definition name="common" template="/WEB-INF/layout/common/classic.jsp">
-    <put-attribute name="title" value="Tiles tutorial homepage" />
-    <put-attribute name="menu" value="/WEB-INF/layout/common/menu.jsp" />
-    <put-attribute name="nav" value="/WEB-INF/layout/common/nav.jsp" />
-    <put-attribute name="footer" value="/WEB-INF/layout/common/footer.jsp" />
-  </definition>
-  
-  <definition name="index" extends="common">
-    <put-attribute name="title" value="Spring Home" />
-    <put-attribute name="body" value="/WEB-INF/views/index.jsp" />
-  </definition>
-  
-  <definition name="login" extends="common">
-    <put-attribute name="title" value="Login" />
-    <put-attribute name="body" value="/WEB-INF/views/login.jsp" />
-  </definition>
- 
+	<definition name="common" template="/WEB-INF/layout/common/classic.jsp">
+		<put-attribute name="title" value="Tiles tutorial homepage" />
+		<put-attribute name="menu" value="/WEB-INF/layout/common/menu.jsp" />
+		<put-attribute name="nav" value="/WEB-INF/layout/common/nav.jsp" />
+		<put-attribute name="footer" value="/WEB-INF/layout/common/footer.jsp" />
+	</definition>
+
+	<definition name="index" extends="common">
+		<put-attribute name="title" value="Home" />
+		<put-attribute name="body" value="/WEB-INF/views/index.jsp" />
+	</definition>
+
+	<definition name="login" extends="common">
+		<put-attribute name="title" value="Login" />
+		<put-attribute name="body" value="/WEB-INF/views/login.jsp" />
+	</definition>
+
+
+	<definition name="404" extends="common">
+		<put-attribute name="title" value="Page not found" />
+		<put-attribute name="body" value="/WEB-INF/views/404.jsp" />
+	</definition>
 </tiles-definitions>

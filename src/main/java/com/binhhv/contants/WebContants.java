@@ -9,6 +9,9 @@ public class WebContants {
 	public static final String LAST_USERNAME_KEY = "LAST_USERNAME";
 	
 	
+	//error
+	public final static String ACTION_ERRORS = "errors";
+	public final static String ERRORS_404 = "404";
 	
 	public final static String MODEL_APP_CONTEXT = "APP_CONTEXT";
 	

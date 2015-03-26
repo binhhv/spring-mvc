@@ -17,6 +17,7 @@ public class LoginController extends AbstractController{
 
 	private static final List<String> INDEX_CSS = WebContants.INDEX_CSS;
 	private static final List<String> LOGIN_CSS = WebContants.LOGIN_CSS;
+	private static final List<String> INDEX_SCRIPT = WebContants.INDEX_SCRIPT;
 	@RequestMapping("/login")
 	public String login(@RequestParam(value = "error", required = false) String error,
 			@RequestParam(value = "logout", required = false) String logout,Model model) {
@@ -28,6 +29,7 @@ public class LoginController extends AbstractController{
 			model.addAttribute("msg", "You've been logged out successfully.");
 		}
 		model.addAttribute("styles",ListUtils.union(INDEX_CSS,LOGIN_CSS) );
+		model.addAttribute("scripts",INDEX_SCRIPT);
 		return "login";
 	}
 }

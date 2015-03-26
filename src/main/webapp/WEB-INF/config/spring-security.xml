@@ -16,6 +16,8 @@
 		 authentication-failure-url="/login.html?error"/>
 		<!--  authentication-failure-url="/login.html?error"/>-->
 		<logout logout-url="/logout" />
+		 
+  
 	</http>
 	<beans:bean
     id="userNameCachingAuthenticationFailureHandler"
