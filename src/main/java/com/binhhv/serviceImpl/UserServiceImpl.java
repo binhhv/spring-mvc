@@ -39,9 +39,9 @@ public class UserServiceImpl implements UserService {
 
 	//@Override
 	@Transactional
-	public void create(UserCreateForm form) {
-		userDAO.create(form);
-
+	public Boolean create(UserCreateForm form) {
+		return userDAO.create(form);
+		
 	}
 
 }

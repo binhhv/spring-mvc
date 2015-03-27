@@ -54,7 +54,9 @@ public class UserController extends AbstractController{
         mv.addObject("styles", INDEX_CSS);
         mv.addObject("scripts", INDEX_SCRIPT);
         mv.addObject("success",0);
+        mv.addObject("listUsers", userService.getAllUsers());
         return mv;
+        
     }
 
     //@PreAuthorize("hasAuthority('ADMIN')")
@@ -68,19 +70,25 @@ public class UserController extends AbstractController{
         if (bindingResult.hasErrors()) {
             // failed validation
         	mv.addObject("success",0);
-            //return "register";
+            return mv;
         }
         try {
-            userService.create(form);
+            if(userService.create(form)){
+            mv.addObject("success",1);
+            }
+            else{
+            	mv.addObject("success",0);
+            }
         } catch (DataIntegrityViolationException e) {
             // probably email already exists - very rare case when multiple admins are adding same user
             // at the same time and form validation has passed for more than one of them.
             LOGGER.warn("Exception occurred when trying to save the user, assuming duplicate email", e);
             bindingResult.reject("email.exists", "Email already exists");
             mv.addObject("success",0);
+            return mv;
         }
         // ok, redirect
-        mv.addObject("success",1);
+       
         return mv;
     }
 }

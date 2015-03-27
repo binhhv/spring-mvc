@@ -12,5 +12,5 @@ public interface UserService {
 
 	    public List<User> getAllUsers();
 
-	    public void create(UserCreateForm form);
+	    public Boolean create(UserCreateForm form);
 }

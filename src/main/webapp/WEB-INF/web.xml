@@ -9,7 +9,8 @@
 		<param-name>contextConfigLocation</param-name>
 		<param-value>
 			/WEB-INF/config/spring-database.xml,
-			/WEB-INF/config/spring-security.xml
+			/WEB-INF/config/spring-security.xml,
+			/WEB-INF/config/spring-mail.xml
 		</param-value>
 	</context-param>
 

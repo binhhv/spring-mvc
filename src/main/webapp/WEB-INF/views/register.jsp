@@ -6,6 +6,9 @@
 <div class="row">
     <div class="col-lg-6 col-lg-offset-3"><h1>Registration user </h1></div>
 </div>
+<c:forEach items="${listUsers }" var ="user">
+	<c:out value="${user }" /> <br>
+</c:forEach>
 <c:choose>
 <c:when test="${success == 0 }">
 <div class="row">
