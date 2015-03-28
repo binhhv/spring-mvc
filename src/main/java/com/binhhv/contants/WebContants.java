@@ -8,7 +8,9 @@ public class WebContants {
 	//session login fail
 	public static final String LAST_USERNAME_KEY = "LAST_USERNAME";
 	
+	//object
 	
+	public final static String MENU_CATEGORIES = "CATEGORIES";
 	//error
 	public final static String ACTION_ERRORS = "errors";
 	public final static String ERRORS_404 = "404";

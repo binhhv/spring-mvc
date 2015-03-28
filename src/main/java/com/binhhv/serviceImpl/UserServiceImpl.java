@@ -30,6 +30,11 @@ public class UserServiceImpl implements UserService {
 		return userDAO.getUserByEmail(email);
 	}
 
+	@Transactional
+	public User getUserByCode(String code) {
+		// TODO Auto-generated method stub
+		return userDAO.getUserByCode(code);
+	}
 	//@Override
 	@Transactional
 	public List<User> getAllUsers() {
@@ -42,6 +47,16 @@ public class UserServiceImpl implements UserService {
 	public Boolean create(UserCreateForm form) {
 		return userDAO.create(form);
 		
+	}
+	
+	@Transactional
+	public Boolean activeUser(User user){
+		return userDAO.activeUser(user);
+	}
+	
+	@Transactional
+	public User activeUser(String code){
+		return userDAO.activeUser(code);
 	}
 
 }

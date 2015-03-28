@@ -69,4 +69,21 @@
         	Register success. Please check your email and get password to login website.
         	</div>
         </c:when>
+        <c:when test="${success == 2 }">
+        	<div class="msg">
+        	Your acount have registered. <a href='<spring:url value="/" />'>Click</a> go to home page.
+        	</div>
+        </c:when>
+        <c:when test="${success == 3 }">
+        	<div class="error">
+        	We could not activate your account because this web address is not valid. Make sure that you have the entire address from the email, and that your email client has not split the address over several lines.
+
+			Please try again with the full address from the email that you received. If it still does not work, try filling in the activation form:
+		
+			If you do not know your activation code, you can find it in the email that was sent to you when you first registered. To have it sent again, please click here:
+			<a href="#">Send new email with activation code.</a>
+			If all else fails, <a href="#">email the administrator</a>, making sure that you include your registered email address and username.
+
+        	</div>
+        </c:when>
    </c:choose>     

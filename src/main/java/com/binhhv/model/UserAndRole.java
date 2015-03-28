@@ -16,12 +16,7 @@ public class UserAndRole {
 	private int user_id;
 	@Column
 	private int role_id;
-	public UserAndRole(int id, int user_id, int role_id) {
-		super();
-		this.id = id;
-		this.user_id = user_id;
-		this.role_id = role_id;
-	}
+	
 	public int getId() {
 		return id;
 	}

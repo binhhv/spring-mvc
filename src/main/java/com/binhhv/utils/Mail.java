@@ -24,7 +24,7 @@ public class Mail {
 		SimpleMailMessage email = new SimpleMailMessage();
         email.setTo(user.getEmail());
         email.setSubject("Action Required to Activate Membership");
-        email.setText(getPropValues("mail.register.properties", user.getUsername(), "http://www.google.com"));
+        email.setText(getPropValues("mail.register.properties", user.getUsername(), "http://localhost:8083/teoti/user/register.html?code="+user.getConfirm_code()));
         mailSender.send(email);
 	}
 	public String getPropValues(String propFileName,String username,String link) throws IOException {

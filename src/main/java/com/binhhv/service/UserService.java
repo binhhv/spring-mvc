@@ -10,7 +10,13 @@ public interface UserService {
 
 	    public User getUserByEmail(String email);
 
+	    public User getUserByCode(String code);
+	    
 	    public List<User> getAllUsers();
 
 	    public Boolean create(UserCreateForm form);
+	    
+	    public Boolean activeUser(User user);
+	    
+	    public User activeUser(String code);
 }

@@ -24,7 +24,7 @@
     class="com.binhhv.utils.UserNameCachingAuthenticationFailureHandler">
     <beans:property name="defaultFailureUrl" value="/login.html?error"/>
 </beans:bean>
-	<authentication-manager>
+	<authentication-manager alias="authenticationManager">
 		<authentication-provider>
 
 			<password-encoder hash="md5" />
