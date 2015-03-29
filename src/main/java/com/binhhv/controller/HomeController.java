@@ -19,7 +19,7 @@ import com.binhhv.service.BlogService;
  * Handles requests for the application home page.
  */
 @Controller
-public class HomeController extends AbstractController {
+public class HomeController{
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	private static final List<String> INDEX_CSS = WebContants.INDEX_CSS;

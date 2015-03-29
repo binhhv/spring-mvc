@@ -51,7 +51,7 @@ import com.binhhv.validator.UserCreateFormValidator;
 
 
 @Controller
-public class UserController extends AbstractController{
+public class UserController {
 	private static final List<String> INDEX_CSS = WebContants.INDEX_CSS;
 	private static final List<String> INDEX_SCRIPT = WebContants.INDEX_SCRIPT;
 	private static final Logger LOGGER = LoggerFactory.getLogger(UserController.class);

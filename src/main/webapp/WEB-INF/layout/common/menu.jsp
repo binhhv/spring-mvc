@@ -1,8 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
-<%@ taglib uri="http://www.springframework.org/security/tags"
-	prefix="sec"%>
+<%@ include file="/WEB-INF/layout/includes.jsp" %>
 <!-- MENU SECTION -->
 <div id="side-menu">
 
@@ -18,7 +16,7 @@
 				title="Users management"> <i class="fa fa-user fa-1x "></i> <span
 					class="menu-title">Users</span>
 			</a></li>
-			<li><a href='<spring:url value="/category/create.html" />'
+			<li><a href='<spring:url value="/category.html" />'
 				title="Users management"> <i class="fa fa-user fa-1x "></i> <span
 					class="menu-title">Category</span>
 			</a></li>

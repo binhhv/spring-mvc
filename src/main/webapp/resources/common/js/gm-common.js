@@ -11,6 +11,26 @@ jQuery(function($) {
 	addCSSRule(".fa-sign-out::before", 'content:""');
 	
 	
+
+		
+		var check = $("#myModal").data("success");
+		if(check == 2){
+			$('#myModal').modal('show');	
+		}
+
+	
+});
+function centerModal() {
+    $(this).css('display', 'block');
+    var $dialog = $(this).find(".modal-dialog");
+    var offset = ($(window).height() - $dialog.height()) / 2;
+    // Center modal vertically in window
+    $dialog.css("margin-top", offset);
+}
+
+$('.modal').on('show.bs.modal', centerModal);
+$(window).on("resize", function () {
+    $('.modal:visible').each(centerModal);
 });
 function getContextPath() {
 	   return window.location.pathname.substring(0, window.location.pathname.indexOf("/",2));

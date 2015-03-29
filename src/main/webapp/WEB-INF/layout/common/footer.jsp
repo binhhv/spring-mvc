@@ -1,4 +1,4 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ include file="/WEB-INF/layout/includes.jsp" %>
 <!-- FOOTER -->
 <section class="footer-section">
 	<div class="container">

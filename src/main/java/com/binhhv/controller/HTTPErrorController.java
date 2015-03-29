@@ -20,7 +20,7 @@ import com.binhhv.contants.WebContants;
 
 @Controller(value=WebContants.ACTION_ERRORS)
 @RequestMapping("/" + WebContants.ACTION_ERRORS)
-public class HTTPErrorController extends AbstractController {
+public class HTTPErrorController  {
 	
 	/**
 	 * 

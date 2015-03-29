@@ -1,8 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
-<%@ taglib uri="http://www.springframework.org/security/tags"
-	prefix="sec"%>
+<%@ include file="/WEB-INF/layout/includes.jsp" %>
 <!-- LOGO NAV BAR -->
 <section class="sec-menu" >
         <div class="container">
@@ -10,7 +8,7 @@
                 <div class="col-md-12">
               <span class="menu-open-icon">  <i class="fa fa-bars pull-left fa-2x b-clr"   ></i> </span> 
               <i class="pull-left">
-              <span class="profile-name">SPRING</span>
+              <span class="profile-name">BINHHV GROUP</span>
               </i> 
               <i class="pull-right">
               <sec:authorize access="isAnonymous()">

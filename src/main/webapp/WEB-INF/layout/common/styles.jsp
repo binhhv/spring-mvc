@@ -1,9 +1,7 @@
 
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib uri="http://www.springframework.org/security/tags"
-	prefix="sec"%>
+<%@ include file="/WEB-INF/layout/includes.jsp" %>
 <sec:authorize access="isAuthenticated()">
-<meta http-equiv="refresh" content="60; url=${APP_CONTEXT}/logout" >
+<meta http-equiv="refresh" content="600; url=${APP_CONTEXT}/logout" >
 </sec:authorize>
 <!-- content="100;URL=/logout"> -->
 <link rel="stylesheet"

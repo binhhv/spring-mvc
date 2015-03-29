@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.binhhv.contants.WebContants;
 
 @Controller
-public class LoginController extends AbstractController{
+public class LoginController {
 
 	private static final List<String> INDEX_CSS = WebContants.INDEX_CSS;
 	private static final List<String> LOGIN_CSS = WebContants.LOGIN_CSS;

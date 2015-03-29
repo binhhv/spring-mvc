@@ -1,6 +1,8 @@
 package com.binhhv.daoImpl;
 
+import java.nio.channels.SeekableByteChannel;
 import java.util.Date;
+import java.util.List;
 
 import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
@@ -41,6 +43,12 @@ public class CategoryDAOImpl implements CategoryDAO {
 		}
 		
 		return false;
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Category> getAllCategories(){
+		return (List<Category>) session.getCurrentSession().createQuery("from "+Category.class.getName()).list();
 	}
 
 }

@@ -10,7 +10,7 @@ public class WebContants {
 	
 	//object
 	
-	public final static String MENU_CATEGORIES = "CATEGORIES";
+	public final static String CATEGORIES_LIST = "CATEGORIES";
 	//error
 	public final static String ACTION_ERRORS = "errors";
 	public final static String ERRORS_404 = "404";

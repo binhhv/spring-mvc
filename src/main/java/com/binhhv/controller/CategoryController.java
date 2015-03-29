@@ -20,7 +20,7 @@ import com.binhhv.validator.CategoryCreateForm;
 import com.binhhv.validator.CategoryCreateFormValidator;
 
 @Controller
-public class CategoryController extends AbstractController{
+public class CategoryController {
 	
 	@Autowired
 	private CategoryService categoryService;
@@ -35,29 +35,31 @@ public class CategoryController extends AbstractController{
 	public void initBinder(WebDataBinder binder){
 		binder.addValidators(categoryCreateFormValidator);
 	}
-	@RequestMapping(value="/category/create",method=RequestMethod.GET)
+	@RequestMapping(value="/category",method=RequestMethod.GET)
 	public ModelAndView getNameCategoryCreate(HttpServletRequest request, HttpServletResponse response){
 		ModelAndView mv = new ModelAndView("category","form",new CategoryCreateForm());
 		mv.addObject("success", 0);
+		mv.addObject("categories", categoryService.getAllCategories());
 		return mv;
 	}
-	@RequestMapping(value="/category/create",method=RequestMethod.POST)
+	@RequestMapping(value="/category",method=RequestMethod.POST)
 	public ModelAndView handleCategoryCreateForm(@Valid @ModelAttribute("form") CategoryCreateForm form,BindingResult bindingResult){
 		ModelAndView mv = new ModelAndView("category");
 		if(bindingResult.hasErrors()){
-			mv.addObject("success", 0);
+			mv.addObject("success", 2);
 			return mv;
 		}
 		try {
 			if(categoryService.addCategory(form)){
-				mv.addObject("success", 1);
+				//mv.addObject("success", 1);
+				return new ModelAndView("redirect:/category.html");
 			}
 			else{
-				mv.addObject("success", 0);
+				mv.addObject("success", 2);
 			}
 			return mv;
 		} catch (DataIntegrityViolationException e) {
-			mv.addObject("success",0);
+			mv.addObject("success",2);
             //return mv;
 			// TODO: handle exception
 		}
