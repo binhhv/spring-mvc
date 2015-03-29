@@ -11,6 +11,7 @@
 <link href="${APP_CONTEXT }/resources/common/css/font-awesome.css" rel="stylesheet" />
 <!-- CUSTOM STYLE CSS -->
 <link href="${APP_CONTEXT }/resources/common/css/style.css" rel="stylesheet" />
+<link href="${APP_CONTEXT }/resources/common/css/gm-basic.css" rel="stylesheet" />
 <!-- GOOGLE FONT CSS -->
 <link href='http://fonts.googleapis.com/css?family=Lobster'
 	rel='stylesheet' type='text/css' />

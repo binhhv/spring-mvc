@@ -78,8 +78,8 @@ public class UserController extends AbstractController{
     		HttpServletRequest request, HttpServletResponse response) throws IOException {
         LOGGER.debug("Getting user create form");
         ModelAndView mv =  new ModelAndView("register", "form", new UserCreateForm());
-        mv.addObject("styles", INDEX_CSS);
-        mv.addObject("scripts", INDEX_SCRIPT);
+       // mv.addObject("styles", INDEX_CSS);
+        //mv.addObject("scripts", INDEX_SCRIPT);
         if(code != null){
         	//mv.addObject("success",2);
         	User user = userService.activeUser(code);
@@ -103,8 +103,8 @@ public class UserController extends AbstractController{
         LOGGER.debug("Processing user create form={}, bindingResult={}", form, bindingResult);
         ModelAndView mv = new ModelAndView("register");
         
-    	mv.addObject("styles", INDEX_CSS);
-    	mv.addObject("scripts", INDEX_SCRIPT);
+    	//mv.addObject("styles", INDEX_CSS);
+    	//mv.addObject("scripts", INDEX_SCRIPT);
         if (bindingResult.hasErrors()) {
             // failed validation
         	mv.addObject("success",0);

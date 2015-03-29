@@ -18,6 +18,10 @@
 				title="Users management"> <i class="fa fa-user fa-1x "></i> <span
 					class="menu-title">Users</span>
 			</a></li>
+			<li><a href='<spring:url value="/category/create.html" />'
+				title="Users management"> <i class="fa fa-user fa-1x "></i> <span
+					class="menu-title">Category</span>
+			</a></li>
 		</sec:authorize>
 		<sec:authorize access="isAnonymous()">
 			

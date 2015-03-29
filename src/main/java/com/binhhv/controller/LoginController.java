@@ -28,8 +28,8 @@ public class LoginController extends AbstractController{
 		if (logout != null) {
 			model.addAttribute("msg", "You've been logged out successfully.");
 		}
-		model.addAttribute("styles",ListUtils.union(INDEX_CSS,LOGIN_CSS) );
-		model.addAttribute("scripts",INDEX_SCRIPT);
+		model.addAttribute("styles",LOGIN_CSS );
+		//model.addAttribute("scripts",INDEX_SCRIPT);
 		return "login";
 	}
 }

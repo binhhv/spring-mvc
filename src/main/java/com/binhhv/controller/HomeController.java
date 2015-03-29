@@ -33,8 +33,8 @@ public class HomeController extends AbstractController {
 	@RequestMapping(value = {"/","/index"}, method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
 		logger.info("wellcome to index page", locale);
-		model.addAttribute("styles",INDEX_CSS);
-		model.addAttribute("scripts",INDEX_SCRIPT);
+		//model.addAttribute("styles",INDEX_CSS);
+		//model.addAttribute("scripts",INDEX_SCRIPT);
 		model.addAttribute("blogs", blogService.getAllBlogs());
 		return "index";
 	}

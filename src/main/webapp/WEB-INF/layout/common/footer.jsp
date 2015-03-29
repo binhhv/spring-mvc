@@ -15,6 +15,8 @@
 <script src="${APP_CONTEXT }/resources/common/bootstrap/js/bootstrap.js"></script>
 <!-- CUSTOM SCRIPTS  -->
 <script src="${APP_CONTEXT }/resources/common/js/custom.js"></script>
+<script src="${APP_CONTEXT }/resources/common/js/gm-bacic.js"></script>
+<script src="${APP_CONTEXT }/resources/common/js/gm-common.js"></script>
 <!-- END FOOTER -->
 <c:forEach items="${scripts }" var="script">
 	<script src="<c:out value="${APP_CONTEXT }/${script }" />"></script>
