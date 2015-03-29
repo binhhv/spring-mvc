@@ -8,6 +8,8 @@
         <mapping class="com.binhhv.model.User" />
         <mapping class="com.binhhv.model.Role" />
         <mapping class="com.binhhv.model.UserAndRole" />
+        <mapping class="com.binhhv.model.Blog" />
+        <mapping class="com.binhhv.model.Category" />
     </session-factory> 
           
 </hibernate-configuration>

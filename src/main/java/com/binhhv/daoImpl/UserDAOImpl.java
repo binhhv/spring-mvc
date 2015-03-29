@@ -27,13 +27,13 @@ import com.binhhv.validator.UserCreateForm;
 public class UserDAOImpl implements UserDAO {
 
 	@Autowired
-	private SessionFactory session;
+	private SessionFactory sessionFactory;
 	@Autowired
 	Mail mail;
 	@Override
 	public User getUserById(long id) {
 		// TODO Auto-generated method stub
-		return (User)session.openSession().get(User.class, id);
+		return (User)sessionFactory.getCurrentSession().get(User.class, id);
 	}
 
 	
@@ -42,7 +42,7 @@ public class UserDAOImpl implements UserDAO {
 		// TODO Auto-generated method stub
 		//Session ss = session.openSession();
 		//ss.getTransaction().begin();
-		Criteria criteria = session.openSession().createCriteria(User.class);
+		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(User.class);
 		criteria.add(Restrictions.eq("email", email));
 		return (User) criteria.uniqueResult();
 		//Query query= ss.createQuery("from "+ User.class.getName()+" where email=:email");
@@ -53,13 +53,13 @@ public class UserDAOImpl implements UserDAO {
 	
 	@Override
 	public User getUserByUsername(String username){
-		Criteria criteria = session.openSession().createCriteria(User.class);
+		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(User.class);
 		criteria.add(Restrictions.eq("username", username));
 		return (User) criteria.uniqueResult();
 	}
 	@Override
 	public User getUserByCode(String code){
-		Criteria criteria = session.openSession().createCriteria(User.class);
+		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(User.class);
 		criteria.add(Restrictions.eq("confirm_code", code));
 		return (User) criteria.uniqueResult();
 	}
@@ -67,7 +67,7 @@ public class UserDAOImpl implements UserDAO {
 	@Override
 	public List<User> getAllUsers() {
 		// TODO Auto-generated method stub
-		Query query = session.openSession().createQuery("from "+ User.class.getName());
+		Query query = sessionFactory.getCurrentSession().createQuery("from "+ User.class.getName());
 		List<User> users = query.list();
 		return users;
 	}
@@ -75,10 +75,11 @@ public class UserDAOImpl implements UserDAO {
 	@Override
 	public Boolean create(UserCreateForm form) {
 		// TODO Auto-generated method stub
-		Session ss = session.openSession();
+		//Session ss = sessionFactory.getCurrentSession();
 		String confirm_code = UUID.randomUUID().toString();
 		try {
-			ss.getTransaction().begin();
+			//sessionFactory.getCurrentSession().getTransaction().begin();
+			//ss.beginTransaction();
 			User user = new User();
 			user.setUsername(form.getUsername());
 			user.setEmail(form.getEmail());
@@ -90,19 +91,21 @@ public class UserDAOImpl implements UserDAO {
 			user.setUpdated_at(date);
 			new MD5();
 			user.setPassword(MD5.crypt(form.getPassword()));
-			ss.save(user);
+			sessionFactory.getCurrentSession().save(user);
 			
 			UserAndRole assign = new UserAndRole();
 			assign.setRole_id(2);
 			assign.setUser_id(user.getId());
-			ss.save(assign);
+			sessionFactory.getCurrentSession().save(assign);
 			
 			mail.sendMail(user);
-			ss.getTransaction().commit();
+			//ss.getTransaction().commit();
+			//ss.close();
 			return true;
 		} catch (Exception e) {
 			  e.printStackTrace();
-	          ss.getTransaction().rollback();
+			  //ss.getTransaction().rollback();
+			  //ss.close();
 	        
 		}
 		  return false;
@@ -111,22 +114,24 @@ public class UserDAOImpl implements UserDAO {
 	@Override
 	public Boolean activeUser(User user)
 	{
-		Session ss = session.openSession();
+		//Session ss = sessionFactory.getCurrentSession();
 		String confirm_code_new = UUID.randomUUID().toString();
 		try {
-			ss.getTransaction().begin();
+			//sessionFactory.getCurrentSession().getTransaction().begin();
+			//ss.beginTransaction();
 			user.setConfirm_code(MD5.crypt(confirm_code_new));
 			user.setStatus(1);
 			user.setConfirmed(1);
 			Date date = new Date();
 			user.setUpdated_at(date);
-			ss.update(user);
-			ss.getTransaction().commit();
+			sessionFactory.getCurrentSession().update(user);
+			//ss.getTransaction().commit();
+			//ss.close();
 			return true;
 		} catch (Exception e) {
-			  e.printStackTrace();
-	          ss.getTransaction().rollback();
-	        
+			 e.printStackTrace();
+			 // ss.getTransaction().rollback();
+			 // ss.close();
 		}
 		  return false;
 	}

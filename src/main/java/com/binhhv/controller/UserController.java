@@ -55,7 +55,8 @@ public class UserController extends AbstractController{
 	private static final List<String> INDEX_CSS = WebContants.INDEX_CSS;
 	private static final List<String> INDEX_SCRIPT = WebContants.INDEX_SCRIPT;
 	private static final Logger LOGGER = LoggerFactory.getLogger(UserController.class);
-	private final UserService userService;
+	@Autowired
+	private  UserService userService;
     private final UserCreateFormValidator userCreateFormValidator;
     
     @Autowired

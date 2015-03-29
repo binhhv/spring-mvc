@@ -6,7 +6,9 @@
 <c:forEach items="${CATEGORIES }" var="category">
 <c:out value="${category.username }" />
 </c:forEach>
-
+<c:forEach items="${blogs }" var="blog">
+<c:out value="${blog.category.name }" />
+</c:forEach>
 <div class="row pad-botm">
 	<div class="col-md-12">
 		<h4 class="header-line">DASHBOARD</h4>

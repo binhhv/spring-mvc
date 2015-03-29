@@ -60,10 +60,10 @@
 		<error-code>404</error-code>
 		<location>/errors/404.html</location>
 	</error-page>
-	<session-config>
-		<session-timeout>20</session-timeout>
+	<!-- <session-config>
+		<session-timeout>1</session-timeout>
 	</session-config>
-	<!-- <filter>
+	<filter>
 		<filter-name>SessionTimeoutFilter</filter-name>
 		<filter-class>com.binhhv.utils.SessionTimeoutFilter</filter-class>
 	</filter>

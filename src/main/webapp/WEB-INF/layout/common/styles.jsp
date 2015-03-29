@@ -1,6 +1,11 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<meta http-equiv="refresh" content="${pageContext.session.maxInactiveInterval}; url=${APP_CONTEXT}/" ><!-- content="100;URL=/logout"> -->
+<%@ taglib uri="http://www.springframework.org/security/tags"
+	prefix="sec"%>
+<sec:authorize access="isAuthenticated()">
+<meta http-equiv="refresh" content="60; url=${APP_CONTEXT}/logout" >
+</sec:authorize>
+<!-- content="100;URL=/logout"> -->
 <link rel="stylesheet"
 	href="${APP_CONTEXT }/resources/common/bootstrap/css/bootstrap.min.css">
 <link href="${APP_CONTEXT }/resources/common/css/font-awesome.css" rel="stylesheet" />
