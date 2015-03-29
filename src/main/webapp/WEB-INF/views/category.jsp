@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
+<form role="form" name="form" action="" method="post">
 <div class="row">
     <div class="col-lg-10 col-lg-offset-1"><h1>Category List </h1></div>
 </div>
@@ -26,10 +26,10 @@
 		<tbody>
 		<c:forEach items="${categories }" var="category" varStatus="loop">
 			<tr>
-				<td>${loop.index + 1}</td>
-				<td>${category.name }</td>
-				<td>${category.created_at }</td>
-				<td>Column content</td>
+				<td><c:out value="${loop.index + 1}" /></td>
+				<td><c:out value="${category.name }" /></td>
+				<td><c:out value="${category.created_at }" /></td>
+				<td><input type="submit" name="action" class="btn btn-primary" value="Edit" />&nbsp;<input type="submit" name="action" class="btn btn-danger" value="Delete" /></td>
 			</tr>
 			</c:forEach>
 		</tbody>
@@ -40,7 +40,7 @@
 
 
 <!-- Modal -->
-<form role="form" name="form" action="" method="post">
+
 	<div class="modal fade modal-category" id="myModal" tabindex="-1"
 		role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
 		data-success="${success }">
