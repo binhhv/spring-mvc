@@ -27,6 +27,7 @@
 		<property name="definitions">
 			<list>
 				<value>/WEB-INF/defs/general.xml</value>
+				<value>/WEB-INF/defs/partial.xml</value>
 			</list>
 		</property>
 	</bean>

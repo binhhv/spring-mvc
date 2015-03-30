@@ -13,16 +13,16 @@ jQuery(function($) {
 	
 
 		
-		var check = $("#myModal").data("success");
+		/*var check = $("#myModal").data("success");
 		//alert(check);
 		if(check == 2 || check == 3){
 			$('#myModal').modal('show');	
-		}
+		}*/
 		
 		  $('#table-category').dataTable();
 	
 });
-function centerModal() {
+/*function centerModal() {
     $(this).css('display', 'block');
     var $dialog = $(this).find(".modal-dialog");
     var offset = ($(window).height() - $dialog.height()) / 2;
@@ -33,10 +33,12 @@ function centerModal() {
 $('.modal').on('show.bs.modal', centerModal);
 $(window).on("resize", function () {
     $('.modal:visible').each(centerModal);
-});
+});*/
 function getContextPath() {
 	   return window.location.pathname.substring(0, window.location.pathname.indexOf("/",2));
 	}
+
+
 
 function addCSSRule(selector, css) {  
  var sheets = document.styleSheets;

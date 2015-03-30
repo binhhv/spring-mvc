@@ -34,4 +34,5 @@
 		<put-attribute name="title" value="Page not found" />
 		<put-attribute name="body" value="/WEB-INF/views/404.jsp" />
 	</definition>
+	
 </tiles-definitions>

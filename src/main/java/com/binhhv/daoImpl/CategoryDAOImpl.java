@@ -5,7 +5,9 @@ import java.util.Date;
 import java.util.List;
 
 import org.hibernate.Criteria;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.hibernate.cfg.CreateKeySecondPass;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,11 +33,23 @@ public class CategoryDAOImpl implements CategoryDAO {
 	public Boolean addCategory(CategoryCreateForm categoryForm) {
 		try {
 			Category category = new Category();
-			category.setName(categoryForm.getName());
-			category.setDelete_flag(0);
-			Date date = new Date();
-			category.setCreated_at(date);
-			session.getCurrentSession().save(category);
+			if(categoryForm.getId() != 0){
+				Session ss = session.getCurrentSession();
+				Transaction trans = ss.beginTransaction();
+				category = this.findCategoryById(categoryForm.getId());// (Category)session.getCurrentSession().get(Category.class, categoryForm.getId());
+				ss.update(category);
+				trans.commit();
+				ss.close();
+				///session.getCurrentSession().beginTransaction().commit();
+			}
+			else{
+				category.setName(categoryForm.getName());
+				category.setDelete_flag(0);
+				Date date = new Date();
+				category.setCreated_at(date);
+				session.getCurrentSession().save(category);
+			}
+			
 			return true;
 		} catch (Exception e) {
 			// TODO: handle exception

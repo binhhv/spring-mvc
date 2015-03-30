@@ -35,8 +35,16 @@ public class WebContants {
 		private static final long serialVersionUID = -5361393392669012074L;
 
 	{
-		add("resources/common/js/gm-bacsic.js");
+		
 		add("resources/common/js/gm-common.js");
+	}};
+	public final static List<String> CATEGORY_SCRIPT = new ArrayList<String>(){/**
+		 * 
+		 */
+		private static final long serialVersionUID = -5361393392669012074L;
+
+	{
+		add("resources/category/js/gm-category.js");
 	}};
 	
 	public final static List<String> LOGIN_CSS = new ArrayList<String>(){/**

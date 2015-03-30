@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+	<definition name="ajax.foo" template="/WEB-INF/layout/partial/partial.jsp">
+	    <put-attribute name="form" value="hello"/>
+	</definition>
+	<definition name="categoryForm" extends="ajax.foo">
+	    <put-attribute name="form" value="/WEB-INF/views/form/formCategory.jsp"/>
+	</definition>
+</tiles-definitions>
