@@ -30,3 +30,6 @@
 .row-category{
 	padding-top:20px;
 }
+.dataTables_filter, .paging_simple_numbers{
+	float:right;
+}

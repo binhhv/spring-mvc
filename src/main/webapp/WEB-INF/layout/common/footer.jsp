@@ -17,6 +17,10 @@
 <script src="${APP_CONTEXT }/resources/common/js/custom.js"></script>
 <script src="${APP_CONTEXT }/resources/common/js/gm-bacic.js"></script>
 <script src="${APP_CONTEXT }/resources/common/js/gm-common.js"></script>
+<script src="//cdn.datatables.net/1.10.5/js/jquery.dataTables.min.js"  type="text/javascript"></script>
+<script src="//cdn.datatables.net/plug-ins/f2c75b7247b/integration/bootstrap/3/dataTables.bootstrap.js"  type="text/javascript"></script>
+
+
 <!-- END FOOTER -->
 <c:forEach items="${scripts }" var="script">
 	<script src="<c:out value="${APP_CONTEXT }/${script }" />"></script>

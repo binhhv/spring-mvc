@@ -12,4 +12,6 @@ public interface CategoryDAO {
 	public Boolean addCategory(CategoryCreateForm category);
 	
 	public List<Category> getAllCategories();
+	
+	public Category findCategoryById(int id);
 }

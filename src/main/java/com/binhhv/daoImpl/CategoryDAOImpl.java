@@ -48,7 +48,14 @@ public class CategoryDAOImpl implements CategoryDAO {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Category> getAllCategories(){
-		return (List<Category>) session.getCurrentSession().createQuery("from "+Category.class.getName()).list();
+		Criteria criteria = session.getCurrentSession().createCriteria(Category.class.getName());
+		criteria.add(Restrictions.eq("delete_flag", 0));
+		return (List<Category>) criteria.list();
+	}
+	
+	@Override
+	public Category findCategoryById(int id){
+		return (Category) session.getCurrentSession().get(Category.class, id);
 	}
 
 }

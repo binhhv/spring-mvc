@@ -14,10 +14,12 @@ jQuery(function($) {
 
 		
 		var check = $("#myModal").data("success");
-		if(check == 2){
+		//alert(check);
+		if(check == 2 || check == 3){
 			$('#myModal').modal('show');	
 		}
-
+		
+		  $('#table-category').dataTable();
 	
 });
 function centerModal() {

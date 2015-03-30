@@ -1,8 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<form role="form" name="form" action="" method="post">
+<%@ include file="/WEB-INF/layout/includes.jsp" %>
+
 <div class="row">
     <div class="col-lg-10 col-lg-offset-1"><h1>Category List </h1></div>
 </div>
@@ -14,7 +13,7 @@
 </div>
 <div class="col-md-10 col-md-offset-1 row-category">
 	<table class="table table-striped table-bordered table-hover"
-		width="744">
+		 id="table-category" cellspacing="0" width="100%">
 		<thead>
 			<tr>
 				<th>No</th>
@@ -29,7 +28,7 @@
 				<td><c:out value="${loop.index + 1}" /></td>
 				<td><c:out value="${category.name }" /></td>
 				<td><c:out value="${category.created_at }" /></td>
-				<td><input type="submit" name="action" class="btn btn-primary" value="Edit" />&nbsp;<input type="submit" name="action" class="btn btn-danger" value="Delete" /></td>
+				<td><a href="${APP_CONTEXT }/category/${category.id }.html?edit" class="btn btn-primary" >Edit</a>&nbsp;<a href="${APP_CONTEXT }/category/${category.id }.html?delete" class="btn btn-danger"  >Delete</a></td>
 			</tr>
 			</c:forEach>
 		</tbody>
@@ -40,7 +39,7 @@
 
 
 <!-- Modal -->
-
+<form role="form" name="form" action="" method="post">
 	<div class="modal fade modal-category" id="myModal" tabindex="-1"
 		role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
 		data-success="${success }">

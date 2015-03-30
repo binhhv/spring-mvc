@@ -7,14 +7,18 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.binhhv.model.Category;
 import com.binhhv.service.CategoryService;
 import com.binhhv.validator.CategoryCreateForm;
 import com.binhhv.validator.CategoryCreateFormValidator;
@@ -63,6 +67,25 @@ public class CategoryController {
             //return mv;
 			// TODO: handle exception
 		}
+		return mv;
+	}
+	
+	@RequestMapping("/category/{id}")
+	public ModelAndView handleCategory(@RequestParam(value = "edit", required = false) String edit,
+			@RequestParam(value = "delete", required = false) String delete,Model model,@PathVariable int id) {
+		if (edit != null) {
+			Category category = categoryService.findCategoryById(id);
+			ModelAndView mv = new ModelAndView("category","form",new CategoryCreateForm(category));
+			mv.addObject("success", 3);
+			mv.addObject("categories", categoryService.getAllCategories());
+			return mv;
+		}
+
+		if (delete != null) {
+			model.addAttribute("msg", "You've been logged out successfully.");
+		}
+		ModelAndView mv = new ModelAndView("adasd");
+		
 		return mv;
 	}
 }

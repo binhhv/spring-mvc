@@ -12,4 +12,6 @@ public interface CategoryService {
 	public Boolean addCategory(CategoryCreateForm categoryForm);
 	
 	public List<Category> getAllCategories();
+	
+	public Category findCategoryById(int id);
 }
