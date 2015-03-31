@@ -12,6 +12,8 @@ public interface UserService {
 
 	    public User getUserByCode(String code);
 	    
+	    public User getUserByUsername(String username);
+	    
 	    public List<User> getAllUsers();
 
 	    public Boolean create(UserCreateForm form);

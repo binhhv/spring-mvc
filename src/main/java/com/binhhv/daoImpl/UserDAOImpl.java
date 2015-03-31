@@ -16,6 +16,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import org.hibernate.criterion.Restrictions;
 
+
 import com.binhhv.dao.UserDAO;
 import com.binhhv.model.User;
 import com.binhhv.model.UserAndRole;
@@ -30,6 +31,12 @@ public class UserDAOImpl implements UserDAO {
 	private SessionFactory sessionFactory;
 	@Autowired
 	Mail mail;
+	
+	//private SessionData ssData;// = new SessionData(sessionFactory);
+	
+	/*public UserDAOImpl(){
+		ssData = new SessionData(sessionFactory);
+	}*/
 	@Override
 	public User getUserById(long id) {
 		// TODO Auto-generated method stub
@@ -53,9 +60,10 @@ public class UserDAOImpl implements UserDAO {
 	
 	@Override
 	public User getUserByUsername(String username){
-		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(User.class);
+		Criteria criteria = sessionFactory.openSession().createCriteria(User.class);
 		criteria.add(Restrictions.eq("username", username));
 		return (User) criteria.uniqueResult();
+		//sessionFactory.close();
 	}
 	@Override
 	public User getUserByCode(String code){
@@ -84,8 +92,8 @@ public class UserDAOImpl implements UserDAO {
 			user.setUsername(form.getUsername());
 			user.setEmail(form.getEmail());
 			user.setConfirm_code(MD5.crypt(confirm_code));
-			user.setStatus(0);
-			user.setConfirmed(0);
+			user.setStatus(1);
+			user.setConfirmed(1);
 			Date date = new Date();
 			user.setCreated_at(date);
 			user.setUpdated_at(date);
@@ -94,11 +102,11 @@ public class UserDAOImpl implements UserDAO {
 			sessionFactory.getCurrentSession().save(user);
 			
 			UserAndRole assign = new UserAndRole();
-			assign.setRole_id(2);
+			assign.setRole_id(1);
 			assign.setUser_id(user.getId());
 			sessionFactory.getCurrentSession().save(assign);
 			
-			mail.sendMail(user);
+			//mail.sendMail(user);
 			//ss.getTransaction().commit();
 			//ss.close();
 			return true;
@@ -151,5 +159,16 @@ public class UserDAOImpl implements UserDAO {
 		
 		return (active)?user:null;
 	}
+	
+	/*private Session getSession() {
+		Session sess = getSessionFactory().getCurrentSession();
+		if (sess == null) {
+			sess = getSessionFactory().openSession();
+		}
+		return sess;
+	}
 
+	private SessionFactory getSessionFactory() {
+		return sessionFactory;
+	}*/
 }

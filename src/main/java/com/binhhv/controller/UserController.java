@@ -10,6 +10,8 @@ import javax.validation.Valid;
 
 
 
+
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +23,7 @@ import org.springframework.security.authentication.dao.DaoAuthenticationProvider
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.WebAuthenticationDetails;
 import org.springframework.security.web.context.HttpSessionSecurityContextRepository;
 import org.springframework.security.web.savedrequest.RequestCache;
@@ -39,6 +42,7 @@ import org.springframework.web.servlet.view.RedirectView;
 import com.binhhv.contants.WebContants;
 import com.binhhv.model.User;
 import com.binhhv.service.UserService;
+import com.binhhv.serviceImpl.UserDetailsServiceImpl;
 import com.binhhv.utils.AuthenticateUser;
 import com.binhhv.utils.RedirectPage;
 import com.binhhv.validator.UserCreateForm;
@@ -57,6 +61,8 @@ public class UserController {
 	private static final Logger LOGGER = LoggerFactory.getLogger(UserController.class);
 	@Autowired
 	private  UserService userService;
+	//@Autowired
+	private  UserDetailsServiceImpl userDetailsServiceImpl;
     private final UserCreateFormValidator userCreateFormValidator;
     
     @Autowired
@@ -85,9 +91,12 @@ public class UserController {
         	User user = userService.activeUser(code);
         	if(user != null){
         		 
-        			
+        		Authentication authentication =  new UsernamePasswordAuthenticationToken(user, null, user.getAuthorities());
+        		LOGGER.debug("Logging in with {}", authentication.getPrincipal());
+        		SecurityContextHolder.getContext().setAuthentication(authentication);	
         		new RedirectPage().redirectToPage(request, response, "/login.html");
         		//response.sendRedirect("/"+request.getContextPath()+"/login.html");
+        		 //mv.addObject("success",3);
         	}
         	else mv.addObject("success",3);
         }
@@ -99,7 +108,8 @@ public class UserController {
     
     //@PreAuthorize("hasAuthority('ADMIN')")
     @RequestMapping(value = "/user/register", method = RequestMethod.POST)
-    public ModelAndView handleUserCreateForm(@Valid @ModelAttribute("form") UserCreateForm form, BindingResult bindingResult) {
+    public ModelAndView handleUserCreateForm(@Valid @ModelAttribute("form") UserCreateForm form, BindingResult bindingResult,
+    		HttpServletRequest request,HttpServletResponse response) throws IOException {
         LOGGER.debug("Processing user create form={}, bindingResult={}", form, bindingResult);
         ModelAndView mv = new ModelAndView("register");
         
@@ -112,7 +122,17 @@ public class UserController {
         }
         try {
             if(userService.create(form)){
+            	User user = userService.getUserByUsername(form.getUsername());
             mv.addObject("success",1);
+//            UserDetails userDetails = userDetailsServiceImpl.loadUserByUsername(form.getUsername());
+//
+//            Authentication authentication = new UsernamePasswordAuthenticationToken(userDetails, userDetails.getPassword(), userDetails.getAuthorities());
+//
+//            SecurityContextHolder.getContext().setAuthentication(authentication);
+            	Authentication authentication =  new UsernamePasswordAuthenticationToken(user, null, user.getAuthorities());
+            	System.out.print("Logging in with { %}" + authentication.getPrincipal());
+            	SecurityContextHolder.getContext().setAuthentication(authentication);	
+            	new RedirectPage().redirectToPage(request, response, "/");
             }
             else{
             	mv.addObject("success",0);
@@ -143,5 +163,19 @@ public class UserController {
         Authentication authenticatedUser = authenticationManager.authenticate(token);
 
         SecurityContextHolder.getContext().setAuthentication(authenticatedUser);
+    }
+    private void doAutoLogin(String username, String password, HttpServletRequest request) {
+
+    	UsernamePasswordAuthenticationToken authRequest = new UsernamePasswordAuthenticationToken(username, password);
+
+        // Authenticate the user
+        Authentication authentication = authenticationManager.authenticate(authRequest);
+        SecurityContext securityContext = SecurityContextHolder.getContext();
+        securityContext.setAuthentication(authentication);
+
+        // Create a new session and add the security context.
+        HttpSession session = request.getSession(true);
+        session.setAttribute("SPRING_SECURITY_CONTEXT", securityContext);
+
     }
 }

@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.binhhv.dao.CategoryDAO;
+
 import com.binhhv.model.Category;
 import com.binhhv.validator.CategoryCreateForm;
 
@@ -22,6 +23,11 @@ public class CategoryDAOImpl implements CategoryDAO {
 
 	@Autowired
 	private SessionFactory session;
+	
+	//private SessionData ssData; 
+	/*public CategoryDAOImpl(){
+		ssData = new SessionData(session);
+	}*/
 	@Override
 	public Category findCategoryByName(String name) {
 		Criteria criteria = session.getCurrentSession().createCriteria(Category.class);

@@ -1,13 +1,23 @@
 package com.binhhv.model;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.GrantedAuthorityImpl;
 
 @Entity
 @Table(name = "users")
@@ -33,20 +43,20 @@ public class User {
 	@Column
 	private Date updated_at;
 	
-	/*public User(int id, String username, String email, String password,
-			String confirm_code, int confirmed, int status, Date created_at,
-			Date updated_at) {
-		super();
-		this.id = id;
-		this.username = username;
-		this.email = email;
-		this.password = password;
-		this.confirm_code = confirm_code;
-		this.confirmed = confirmed;
-		this.status = status;
-		this.created_at = created_at;
-		this.updated_at = updated_at;
-	}*/
+	@ManyToMany(fetch = FetchType.EAGER)
+	@JoinTable(name="userandrole",
+				joinColumns=@JoinColumn(name="user_id"),
+				inverseJoinColumns=@JoinColumn(name="role_id")
+				)
+	private List<Role> roles;
+	
+	public List<Role> getRoles() {
+		return roles;
+	}
+	public void setRoles(List<Role> roles) {
+		this.roles = roles;
+	}
+	
 	public int getId() {
 		return id;
 	}
@@ -101,6 +111,31 @@ public class User {
 	public void setUpdated_at(Date updated_at) {
 		this.updated_at = updated_at;
 	}
+	public User(int id, String username, String email, String password,
+			String confirm_code, int confirmed, int status, Date created_at,
+			Date updated_at, List<Role> roles) {
+		super();
+		this.id = id;
+		this.username = username;
+		this.email = email;
+		this.password = password;
+		this.confirm_code = confirm_code;
+		this.confirmed = confirmed;
+		this.status = status;
+		this.created_at = created_at;
+		this.updated_at = updated_at;
+		this.roles = roles;
+	}
+	public User() {
+		super();
+	}
 	
+	public Collection<GrantedAuthority> getAuthorities(){
+		Collection<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
+		for(Role role : this.getRoles()){
+			authorities.add(new GrantedAuthorityImpl(role.getName()));
+		}
+		return authorities;
+	}
 	
 }

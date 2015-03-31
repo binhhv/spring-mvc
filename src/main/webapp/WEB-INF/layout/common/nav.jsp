@@ -18,7 +18,7 @@
                
               </sec:authorize>
              <sec:authorize access="isAuthenticated()">
-             	<img alt="" src="${APP_CONTEXT }/resources/common/images/otto.png" width="50">&nbsp  <a href='<spring:url value="/user/profile.html" />' class="profile-name"><sec:authentication property="name"/></a>
+             	<img alt="" src="${APP_CONTEXT }/resources/common/images/otto.png" width="50">&nbsp  <a href='<spring:url value="/user/profile.html" />' class="profile-name"><sec:authentication property="principal.username"/></a>
              </sec:authorize>
                
                </i>   

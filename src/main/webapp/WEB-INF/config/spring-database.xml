@@ -45,4 +45,23 @@
 		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean> -->
+	<!-- <bean id="userDetailsService" class="com.binhhv.serviceImpl.UserDetailsServiceImpl" >
+		
+	</bean>
+	<bean id="daoAuthenticationProvider" class="org.springframework.security.authentication.dao.DaoAuthenticationProvider">
+	    <property name="userDetailsService" ref="userDetailsService" ></property>
+	    
+	</bean>
+	
+	<bean id="authenticationManager" class="org.springframework.security.authentication.ProviderManager">
+	    <property name="providers">
+	        <list>
+	            <ref local="daoAuthenticationProvider"/>
+	        </list>
+	    </property>
+	</bean> -->
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
 </beans>

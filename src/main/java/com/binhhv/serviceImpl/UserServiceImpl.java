@@ -58,5 +58,8 @@ public class UserServiceImpl implements UserService {
 	public User activeUser(String code){
 		return userDAO.activeUser(code);
 	}
-
+	@Transactional
+	public User getUserByUsername(String username){
+		return userDAO.getUserByUsername(username);
+	}
 }

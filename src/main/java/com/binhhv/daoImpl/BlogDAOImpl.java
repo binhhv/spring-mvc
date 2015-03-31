@@ -7,7 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.binhhv.dao.BlogDAO;
+
 import com.binhhv.model.Blog;
+import com.mysql.jdbc.interceptors.SessionAssociationInterceptor;
 
 @Repository
 public class BlogDAOImpl implements BlogDAO {
