@@ -28,10 +28,11 @@
 				<td><c:out value="${loop.index + 1}" /></td>
 				<td><c:out value="${category.name }" /></td>
 				<td><c:out value="${category.created_at }" /></td>
-				<td><button class="btn btn-primary"
+				<td width="200"><button class="btn btn-primary"
 									onclick="editCategory(${category.id});">Edit</button>
 				<%-- <a href="${APP_CONTEXT }/category/${category.id }.html?edit" class="btn btn-primary" >Edit</a> --%>
-				&nbsp;<a href="${APP_CONTEXT }/category/${category.id }.html?delete" class="btn btn-danger"  >Delete</a></td>
+				&nbsp;<button id ="category-delete-id-${category.id}" data-url="${APP_CONTEXT }/category/delete/${category.id }.html" class="btn btn-danger"
+									onclick="deleteCategory(${category.id});">Delete</button></td>
 			</tr>
 			</c:forEach>
 		</tbody>
@@ -44,5 +45,23 @@
 </div>
 
 
+<!-- Modal -->
+<div class="modal fade" id="modalRemoveCategory" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Remove Category</h4>
+      </div>
+      <div class="modal-body">
+        Do you want to delate category ?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cance</button>
+        <a href="" class="btn btn-danger removeBtn">Remove</a>
+      </div>
+    </div>
+  </div>
+</div>
 <!-- Modal -->
 

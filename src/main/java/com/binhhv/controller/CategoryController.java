@@ -8,6 +8,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -42,13 +43,7 @@ public class CategoryController {
 	public void initBinder(WebDataBinder binder){
 		binder.addValidators(categoryCreateFormValidator);
 	}
-	/*@RequestMapping(value="/category",method=RequestMethod.GET)
-	public String getNameCategoryCreate(HttpServletRequest request, HttpServletResponse response){
-		//ModelAndView mv = new ModelAndView("abc");//("category","form",new CategoryCreateForm());
-		//mv.addObject("success", 0);
-		//mv.addObject("categories", categoryService.getAllCategories());
-		return "abc";
-	}*/
+	
 	@RequestMapping(value="/category",method=RequestMethod.GET)
 	public ModelAndView getNameCategoryCreate(HttpServletRequest request, HttpServletResponse response){
 		ModelAndView mv = new ModelAndView("category","form",new CategoryCreateForm());
@@ -89,23 +84,11 @@ public class CategoryController {
 		}
 		return mv;
 	}
-	
-	/*@RequestMapping("/category/{id}")
-	public ModelAndView handleCategory(@RequestParam(value = "edit", required = false) String edit,
-			@RequestParam(value = "delete", required = false) String delete,Model model,@PathVariable int id) {
-		if (edit != null) {
-			Category category = categoryService.findCategoryById(id);
-			ModelAndView mv = new ModelAndView("category","form",new CategoryCreateForm(category));
-			mv.addObject("success", 3);
-			mv.addObject("categories", categoryService.getAllCategories());
-			return mv;
-		}
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
+	@RequestMapping("/category/delete/{categoryId}")
+	public String deleteBook(@PathVariable("categoryId") int categoryId) {
 
-		if (delete != null) {
-			model.addAttribute("msg", "You've been logged out successfully.");
-		}
-		ModelAndView mv = new ModelAndView("adasd");
-		
-		return mv;
-	}*/
+		categoryService.deleteCategory(categoryId);
+		return "redirect:/category.html";
+	}
 }

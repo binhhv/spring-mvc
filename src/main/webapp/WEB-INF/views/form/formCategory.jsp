@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/layout/includes.jsp" %>
-<form role="form" name="form" action="" method="post">
+<form role="form" name="form" action="" method="post" id="categoryForm-id">
 	<div class="modal fade modal-category" id="myModal" tabindex="-1"
 		role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
 		data-success="${success }">
@@ -36,7 +36,7 @@
 					<input type="hidden" name="id" value="${form.id}"/>
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal" id="btn-close-categoryForm">Close</button>
 					<input type="submit" name="submit" id="submit" value="Submit"
 						class="btn btn-info pull-right">
 				</div>

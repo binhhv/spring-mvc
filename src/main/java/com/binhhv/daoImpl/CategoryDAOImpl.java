@@ -26,6 +26,7 @@ public class CategoryDAOImpl implements CategoryDAO {
 	public Category findCategoryByName(String name) {
 		Criteria criteria = session.getCurrentSession().createCriteria(Category.class);
 		criteria.add(Restrictions.eq("name", name));
+		criteria.add(Restrictions.eq("delete_flag", 0));
 		return (Category)criteria.uniqueResult();
 	}
 
@@ -34,12 +35,14 @@ public class CategoryDAOImpl implements CategoryDAO {
 		try {
 			Category category = new Category();
 			if(categoryForm.getId() != 0){
-				Session ss = session.getCurrentSession();
-				Transaction trans = ss.beginTransaction();
-				category = this.findCategoryById(categoryForm.getId());// (Category)session.getCurrentSession().get(Category.class, categoryForm.getId());
-				ss.update(category);
-				trans.commit();
-				ss.close();
+				//Session ss = session.getCurrentSession();
+				//Transaction trans = getSession().beginTransaction();
+				category = this.findCategoryById(categoryForm.getId());
+				category.setName(categoryForm.getName());// (Category)session.getCurrentSession().get(Category.class, categoryForm.getId());
+				session.getCurrentSession().saveOrUpdate(category);
+				//trans.commit();
+				//ss.flush();
+				//ss.close();
 				///session.getCurrentSession().beginTransaction().commit();
 			}
 			else{
@@ -71,5 +74,18 @@ public class CategoryDAOImpl implements CategoryDAO {
 	public Category findCategoryById(int id){
 		return (Category) session.getCurrentSession().get(Category.class, id);
 	}
-
+	
+	/*private Session getSession() {
+		Session sess = session.getCurrentSession();
+		if (sess == null) {
+			sess = session.openSession();
+		}
+		return sess;
+	}*/
+	@Override
+	public void deleteCategory(int id){
+		Category category = this.findCategoryById(id);
+		category.setDelete_flag(1);// (Category)session.getCurrentSession().get(Category.class, categoryForm.getId());
+		session.getCurrentSession().saveOrUpdate(category);
+	}
 }

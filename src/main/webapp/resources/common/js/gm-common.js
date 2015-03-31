@@ -20,6 +20,8 @@ jQuery(function($) {
 		}*/
 		
 		  $('#table-category').dataTable();
+		  
+		 
 	
 });
 /*function centerModal() {

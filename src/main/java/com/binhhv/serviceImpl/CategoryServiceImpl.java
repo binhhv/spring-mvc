@@ -42,4 +42,10 @@ public class CategoryServiceImpl implements CategoryService {
 		return categoryDAO.findCategoryById(id);
 	
 	}
+	
+	@Override
+	@Transactional
+	public void deleteCategory(int id){
+		categoryDAO.deleteCategory(id);
+	}
 }
