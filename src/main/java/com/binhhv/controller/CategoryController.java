@@ -1,6 +1,7 @@
 package com.binhhv.controller;
 
 import java.util.Map;
+import java.util.regex.Pattern;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -12,6 +13,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -26,6 +28,9 @@ import com.binhhv.model.Category;
 import com.binhhv.service.CategoryService;
 import com.binhhv.validator.CategoryCreateForm;
 import com.binhhv.validator.CategoryCreateFormValidator;
+import com.binhhv.utils.JsonResponse;
+
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class CategoryController {
@@ -45,9 +50,24 @@ public class CategoryController {
 	}
 	
 	@RequestMapping(value="/category",method=RequestMethod.GET)
-	public ModelAndView getNameCategoryCreate(HttpServletRequest request, HttpServletResponse response){
+	public ModelAndView getNameCategoryCreate(@RequestParam(value="error", required=false)String error,HttpServletRequest request, HttpServletResponse response){
 		ModelAndView mv = new ModelAndView("category","form",new CategoryCreateForm());
-		mv.addObject("success", 0);
+		//System.out.print("param "+ error);
+		if(error != null){
+			try {
+				int valueError = Integer.parseInt(error);
+				if(valueError > 3 || valueError <= 0){
+					mv.addObject("success", 0);
+				}
+				else{
+					mv.addObject("success", valueError);
+				}
+				
+			} catch (Exception e) {
+				mv.addObject("success", 0);
+			}
+		}
+		else mv.addObject("success", 0);
 		mv.addObject("scripts", WebContants.CATEGORY_SCRIPT);
 		mv.addObject("categories", categoryService.getAllCategories());
 		return mv;
@@ -60,30 +80,51 @@ public class CategoryController {
 		map.put("form", new CategoryCreateForm(category));
 		return "categoryForm";
 	}
-	@RequestMapping(value="/category",method=RequestMethod.POST)
-	public ModelAndView handleCategoryCreateForm(@Valid @ModelAttribute("form") CategoryCreateForm form,BindingResult bindingResult){
-		ModelAndView mv = new ModelAndView("category");
-		System.out.print(form.getId());
-		if(bindingResult.hasErrors()){
-			mv.addObject("success", 2);
-			return mv;
+	@RequestMapping(value="/category",headers="Accept=*/*",method=RequestMethod.POST)
+	public @ResponseBody JsonResponse  handleCategoryCreateForm(@Valid @ModelAttribute("form") CategoryCreateForm form,BindingResult bindingResult,Map<String, Object> map){
+		JsonResponse res = new JsonResponse();
+		if(!bindingResult.hasErrors()){
+			categoryService.addCategory(form);
+			res.setStatus("SUCCESS");
 		}
-		try {
-			if(categoryService.addCategory(form)){
-				//mv.addObject("success", 1);
-				return new ModelAndView("redirect:/category.html");
-			}
-			else{
-				mv.addObject("success", 2);
-			}
-			return mv;
-		} catch (DataIntegrityViolationException e) {
-			mv.addObject("success",2);
-            //return mv;
-			// TODO: handle exception
+		else{
+			res.setStatus("FAIL");
+			System.out.print("error  ====" +bindingResult.getAllErrors() );
+			res.setResult(bindingResult.getAllErrors());
 		}
-		return mv;
+		return res;
 	}
+	
+//	@RequestMapping(value="/category",method=RequestMethod.POST)
+//	public ModelAndView handleCategoryCreateForm(@Valid @ModelAttribute("form") CategoryCreateForm form,BindingResult bindingResult){
+//		//ModelAndView mv = new ModelAndView("category");
+//		String typeError = "1";
+//		if(form.getId() !=0){
+//			typeError ="2";
+//		}
+//		if(bindingResult.hasErrors()){
+//			//mv.addObject("success", 2);
+//			//return mv;
+//			return new ModelAndView("redirect:/category.html?error="+typeError);
+//		}
+//		try {
+//			if(categoryService.addCategory(form)){
+//				//mv.addObject("success", 1);
+//				return new ModelAndView("redirect:/category.html");
+//			}
+//			else{
+//				//mv.addObject("success", 2);
+//				return new ModelAndView("redirect:/category.html?error="+typeError);
+//			}
+//			//return mv;
+//		} catch (DataIntegrityViolationException e) {
+//			//mv.addObject("success",2);
+//            //return mv;
+//			// TODO: handle exception
+//			return new ModelAndView("redirect:/category.html?error="+typeError);
+//		}
+//		//return mv;
+//	}
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@RequestMapping("/category/delete/{categoryId}")
 	public String deleteBook(@PathVariable("categoryId") int categoryId) {

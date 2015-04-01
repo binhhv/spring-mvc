@@ -12,6 +12,7 @@ import javax.validation.Valid;
 
 
 
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -91,12 +92,16 @@ public class UserController {
         	User user = userService.activeUser(code);
         	if(user != null){
         		 
-        		Authentication authentication =  new UsernamePasswordAuthenticationToken(user, null, user.getAuthorities());
+        		/*Authentication authentication =  new UsernamePasswordAuthenticationToken(user, null, user.getAuthorities());
         		LOGGER.debug("Logging in with {}", authentication.getPrincipal());
         		SecurityContextHolder.getContext().setAuthentication(authentication);	
-        		new RedirectPage().redirectToPage(request, response, "/login.html");
+        		new RedirectPage().redirectToPage(request, response, "/login.html");*/
         		//response.sendRedirect("/"+request.getContextPath()+"/login.html");
         		 //mv.addObject("success",3);
+        		Authentication authentication =  new UsernamePasswordAuthenticationToken(user, null, user.getAuthorities());
+            	System.out.print("Logging in with { %}" + authentication.getPrincipal());
+            	SecurityContextHolder.getContext().setAuthentication(authentication);	
+            	new RedirectPage().redirectToPage(request, response, "/");
         	}
         	else mv.addObject("success",3);
         }
@@ -117,22 +122,20 @@ public class UserController {
     	//mv.addObject("scripts", INDEX_SCRIPT);
         if (bindingResult.hasErrors()) {
             // failed validation
+        	System.out.print("error  ====" +bindingResult.getAllErrors() );
         	mv.addObject("success",0);
             return mv;
         }
         try {
             if(userService.create(form)){
-            	User user = userService.getUserByUsername(form.getUsername());
+            	//User user = userService.getUserByUsername(form.getUsername());
             mv.addObject("success",1);
 //            UserDetails userDetails = userDetailsServiceImpl.loadUserByUsername(form.getUsername());
 //
 //            Authentication authentication = new UsernamePasswordAuthenticationToken(userDetails, userDetails.getPassword(), userDetails.getAuthorities());
 //
 //            SecurityContextHolder.getContext().setAuthentication(authentication);
-            	Authentication authentication =  new UsernamePasswordAuthenticationToken(user, null, user.getAuthorities());
-            	System.out.print("Logging in with { %}" + authentication.getPrincipal());
-            	SecurityContextHolder.getContext().setAuthentication(authentication);	
-            	new RedirectPage().redirectToPage(request, response, "/");
+            	
             }
             else{
             	mv.addObject("success",0);

@@ -1,7 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/layout/includes.jsp" %>
-
+<script type="text/javascript">
+	var contexPath = "<%=request.getContextPath() %>";
+</script>
 <div class="row">
     <div class="col-lg-10 col-lg-offset-1"><h1>Category List </h1></div>
 </div>
@@ -54,7 +56,7 @@
         <h4 class="modal-title" id="myModalLabel">Remove Category</h4>
       </div>
       <div class="modal-body">
-        Do you want to delate category ?
+        Do you want to delete category ?
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Cance</button>
@@ -63,5 +65,4 @@
     </div>
   </div>
 </div>
-<!-- Modal -->
 

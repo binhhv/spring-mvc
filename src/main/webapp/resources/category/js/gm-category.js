@@ -3,7 +3,7 @@
  */
 jQuery(function($) {
 	//setPostionModal();
-	
+	//$("#error-category").hide();
 	
 });
 function deleteCategory(id){
@@ -21,6 +21,36 @@ function addCategory(){
 	resetDialog($("#categoryForm-id"));
 }
 
+function submitCategory(){
+	 var form = $('#categoryForm-id').serialize();
+	
+	  $.ajax({  
+	    type: "POST",  
+	    url: getContextPath() + "/category.html",  
+	    data: form, 
+	    dataType: 'json',
+	    success: function(response){
+	    	if(response.status == "SUCCESS"){
+	    		window.location.href = getContextPath()+"/category.html";
+	    	}
+	    	else{
+	    		
+	    		//alert("myObject is " + JSON.stringify(response.result[0]));
+	    		var errorInfo="";
+	    		for(i =0 ; i < response.result.length ; i++){
+		    		  errorInfo +=  (i + 1) +". " + response.result[i].code +"\n" ;
+		    	  }
+	    		//alert(errorInfo);
+	    		$("#error-category").show();
+	    		$("#error-category").text(errorInfo);
+	    	}
+	    		
+	    },  
+	    error: function(e){  
+	      alert('Error: ' + e);  
+	    }  
+	  }); 
+}
 function editCategory(id) {
 
 	$.get("get/" + id+".html", function(result) {

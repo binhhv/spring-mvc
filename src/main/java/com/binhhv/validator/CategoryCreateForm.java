@@ -10,6 +10,16 @@ public class CategoryCreateForm {
 
 	private int id;
 	
+	private String tempName="";
+	
+	public String getTempName() {
+		return tempName;
+	}
+
+	public void setTempName(String tempName) {
+		this.tempName = tempName;
+	}
+
 	public int getId() {
 		return id;
 	}
@@ -26,15 +36,17 @@ public class CategoryCreateForm {
 		this.name = name;
 	}
 
-	public CategoryCreateForm(String name, int id) {
+	public CategoryCreateForm(String name, int id,String tempName) {
 		super();
 		this.name = name;
 		this.id = id;
+		this.tempName = tempName;
 	}
 	public CategoryCreateForm(){}
 	public CategoryCreateForm(Category category){
 		super();
 		this.name = category.getName();
+		this.tempName = category.getName();
 		this.id = category.getId();
 	}
 }

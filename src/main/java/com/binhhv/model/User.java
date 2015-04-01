@@ -42,6 +42,10 @@ public class User {
 	private Date created_at;
 	@Column
 	private Date updated_at;
+	@Column
+	private int disabled_flag;
+	@Column
+	private int delete_flag;
 	
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name="userandrole",
@@ -111,9 +115,24 @@ public class User {
 	public void setUpdated_at(Date updated_at) {
 		this.updated_at = updated_at;
 	}
+	
+	public int getDisabled_flag() {
+		return disabled_flag;
+	}
+	public void setDisabled_flag(int disabled_flag) {
+		this.disabled_flag = disabled_flag;
+	}
+	public int getDelete_flag() {
+		return delete_flag;
+	}
+	public void setDelete_flag(int delete_flag) {
+		this.delete_flag = delete_flag;
+	}
+	
 	public User(int id, String username, String email, String password,
 			String confirm_code, int confirmed, int status, Date created_at,
-			Date updated_at, List<Role> roles) {
+			Date updated_at, int disabled_flag, int delete_flag,
+			List<Role> roles) {
 		super();
 		this.id = id;
 		this.username = username;
@@ -124,6 +143,8 @@ public class User {
 		this.status = status;
 		this.created_at = created_at;
 		this.updated_at = updated_at;
+		this.disabled_flag = disabled_flag;
+		this.delete_flag = delete_flag;
 		this.roles = roles;
 	}
 	public User() {

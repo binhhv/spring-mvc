@@ -36,10 +36,11 @@ public class CategoryCreateFormValidator implements Validator{
 	
 	private void validateName(Errors errors, CategoryCreateForm categoryCreateForm)
 	{
+		if(!categoryCreateForm.getTempName().equalsIgnoreCase(categoryCreateForm.getName()) ){
 		Category category = categoryService.findCategoryByName(categoryCreateForm.getName());
 		if(category != null){
-			errors.reject("name.exists", "Category with this name already exists");
-		}
+			errors.reject("Category with this name already exists");
+		}}
 	}
 
 }

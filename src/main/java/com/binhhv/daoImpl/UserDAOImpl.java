@@ -69,6 +69,7 @@ public class UserDAOImpl implements UserDAO {
 	public User getUserByCode(String code){
 		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(User.class);
 		criteria.add(Restrictions.eq("confirm_code", code));
+		criteria.add(Restrictions.eq("confirmed", 0));
 		return (User) criteria.uniqueResult();
 	}
 	
@@ -92,8 +93,8 @@ public class UserDAOImpl implements UserDAO {
 			user.setUsername(form.getUsername());
 			user.setEmail(form.getEmail());
 			user.setConfirm_code(MD5.crypt(confirm_code));
-			user.setStatus(1);
-			user.setConfirmed(1);
+			user.setStatus(0);
+			user.setConfirmed(0);
 			Date date = new Date();
 			user.setCreated_at(date);
 			user.setUpdated_at(date);
@@ -123,11 +124,11 @@ public class UserDAOImpl implements UserDAO {
 	public Boolean activeUser(User user)
 	{
 		//Session ss = sessionFactory.getCurrentSession();
-		String confirm_code_new = UUID.randomUUID().toString();
+		//String confirm_code_new = UUID.randomUUID().toString();
 		try {
 			//sessionFactory.getCurrentSession().getTransaction().begin();
 			//ss.beginTransaction();
-			user.setConfirm_code(MD5.crypt(confirm_code_new));
+			//user.setConfirm_code(MD5.crypt(confirm_code_new));
 			user.setStatus(1);
 			user.setConfirmed(1);
 			Date date = new Date();

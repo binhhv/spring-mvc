@@ -4,7 +4,7 @@
 <form role="form" name="form" action="" method="post" id="categoryForm-id">
 	<div class="modal fade modal-category" id="myModal" tabindex="-1"
 		role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
-		data-success="${success }">
+		>
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
@@ -15,6 +15,7 @@
 					<h4 class="modal-title" id="myModalLabel">Category</h4>
 				</div>
 				<div class="modal-body">
+						<div class="error" id ="error-category"></div>
 					<spring:bind path="form">
 						<c:if test="${status.error }">
 							<div class="error">
@@ -33,12 +34,16 @@
 								class="glyphicon glyphicon-asterisk"></span></span>
 						</div>
 					</div>
-					<input type="hidden" name="id" value="${form.id}"/>
+					<c:if test="${form.id != 0 }">
+						<input type="hidden" name="id" value="${form.id}"/>
+						<input type="hidden" name="tempName" value="${form.tempName}"/>
+					</c:if>
+					
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal" id="btn-close-categoryForm">Close</button>
-					<input type="submit" name="submit" id="submit" value="Submit"
-						class="btn btn-info pull-right">
+					<input type="button" name="submit" id="submit" value="Submit"
+						class="btn btn-info pull-right" onclick="submitCategory();">
 				</div>
 			</div>
 		</div>

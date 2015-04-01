@@ -33,3 +33,13 @@
 .dataTables_filter, .paging_simple_numbers{
 	float:right;
 }
+.notification{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+
+}
+#error-category{
+	display:none;
+}
+}
