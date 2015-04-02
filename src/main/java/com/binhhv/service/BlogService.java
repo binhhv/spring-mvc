@@ -7,4 +7,6 @@ import com.binhhv.model.Blog;
 public interface BlogService {
 
 	public List<Blog> getAllBlogs();
+	
+	public int getNumbersBlog();
 }

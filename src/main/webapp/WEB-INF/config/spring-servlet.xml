@@ -32,7 +32,7 @@
                 atom=application/atom+xml
                 html=text/html
                 json=application/json
-                *=*/*
+             
             </value>
         </property>
     </bean>

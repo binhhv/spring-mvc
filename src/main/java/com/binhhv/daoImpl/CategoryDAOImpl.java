@@ -9,12 +9,13 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.CreateKeySecondPass;
+import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.binhhv.dao.CategoryDAO;
-
+import com.binhhv.model.Blog;
 import com.binhhv.model.Category;
 import com.binhhv.validator.CategoryCreateForm;
 
@@ -93,5 +94,13 @@ public class CategoryDAOImpl implements CategoryDAO {
 		Category category = this.findCategoryById(id);
 		category.setDelete_flag(1);// (Category)session.getCurrentSession().get(Category.class, categoryForm.getId());
 		session.getCurrentSession().saveOrUpdate(category);
+	}
+	
+	@Override
+	public int getNumbersCategory(){
+		Criteria criteria = session.getCurrentSession().createCriteria(Category.class);
+		criteria.add(Restrictions.eq("delete_flag", 0));
+		criteria.setProjection(Projections.rowCount());
+		return (Integer) criteria.uniqueResult();
 	}
 }

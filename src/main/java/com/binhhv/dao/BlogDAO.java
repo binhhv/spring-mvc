@@ -7,4 +7,6 @@ import com.binhhv.model.Blog;
 public interface BlogDAO {
 
 	public List<Blog> getAllBlogs();
+	
+	public int getNumbersBlog();
 }

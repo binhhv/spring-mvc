@@ -1,4 +1,4 @@
-package com.binhhv.utils;
+package com.binhhv.model.json;
 
 public class JsonResponse {
 	private String status = null;

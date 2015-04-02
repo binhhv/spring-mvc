@@ -21,5 +21,11 @@ public class BlogServiceImpl implements BlogService {
 		// TODO Auto-generated method stub
 		return blogDAO.getAllBlogs();
 	}
+	
+	@Override
+	@Transactional
+	public int getNumbersBlog(){
+		return blogDAO.getNumbersBlog();
+	}
 
 }

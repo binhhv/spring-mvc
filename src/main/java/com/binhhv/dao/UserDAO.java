@@ -22,4 +22,6 @@ public interface UserDAO {
     public Boolean activeUser(User user);
     
     public User activeUser(String code);
+    
+    public int getNumbersUser();
 }

@@ -14,10 +14,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 
 
+
 import com.binhhv.dao.UserDAO;
+import com.binhhv.model.Blog;
 import com.binhhv.model.User;
 import com.binhhv.model.UserAndRole;
 import com.binhhv.utils.MD5;
@@ -161,15 +164,11 @@ public class UserDAOImpl implements UserDAO {
 		return (active)?user:null;
 	}
 	
-	/*private Session getSession() {
-		Session sess = getSessionFactory().getCurrentSession();
-		if (sess == null) {
-			sess = getSessionFactory().openSession();
-		}
-		return sess;
+	@Override
+	public int getNumbersUser(){
+		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(User.class);
+		criteria.add(Restrictions.eq("delete_flag", 0));
+		criteria.setProjection(Projections.rowCount());
+		return (Integer) criteria.uniqueResult();
 	}
-
-	private SessionFactory getSessionFactory() {
-		return sessionFactory;
-	}*/
 }

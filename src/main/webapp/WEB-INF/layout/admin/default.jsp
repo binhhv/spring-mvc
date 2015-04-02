@@ -27,9 +27,10 @@
         <section class="content-header">
          <tiles:insertAttribute name="content-header" />
         </section>
-
+		
         <!-- Main content -->
         <section class="content">
+          <tiles:insertAttribute name="header-box" />
           <tiles:insertAttribute name="content" />
         </section><!-- /.content -->
       </div><!-- /.content-wrapper -->

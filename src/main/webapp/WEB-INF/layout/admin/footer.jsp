@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/layout/includes.jsp" %>
 <!-- jQuery 2.1.3 -->
-    <script src="${APP_CONTEXT }/resources/admin/plugins/jQuery/jQuery-2.1.3.min.js"></script>
+    <%-- <script src="${APP_CONTEXT }/resources/admin/plugins/jQuery/jQuery-2.1.3.min.js"></script>
     <!-- jQuery UI 1.11.2 -->
     <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.min.js" type="text/javascript"></script>
     <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
@@ -41,3 +41,40 @@
 
     <!-- AdminLTE for demo purposes -->
     <script src="${APP_CONTEXT }/resources/admin/dist/js/demo.js" type="text/javascript"></script>
+    <script src="${APP_CONTEXT }/resources/admin/js/gm-admin.js" type="text/javascript"></script>
+    <script src="${APP_CONTEXT }/resources/admin/js/gm-category.js" type="text/javascript"></script>
+    <script src="//cdn.datatables.net/1.10.5/js/jquery.dataTables.min.js"  type="text/javascript"></script>
+	<script src="//cdn.datatables.net/plug-ins/f2c75b7247b/integration/bootstrap/3/dataTables.bootstrap.js"  type="text/javascript"></script>
+
+     --%>
+     <!-- jQuery 2.1.3 -->
+    <script src="${APP_CONTEXT }/resources/admin/plugins/jQuery/jQuery-2.1.3.min.js"></script>
+    <!-- Bootstrap 3.3.2 JS -->
+    <script src="${APP_CONTEXT }/resources/admin/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    <!-- DATA TABES SCRIPT -->
+    <script src="${APP_CONTEXT }/resources/admin/plugins/datatables/jquery.dataTables.js" type="text/javascript"></script>
+    <script src="${APP_CONTEXT }/resources/admin/plugins/datatables/dataTables.bootstrap.js" type="text/javascript"></script>
+    <!-- SlimScroll -->
+    <script src="${APP_CONTEXT }/resources/admin/plugins/slimScroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+    <!-- FastClick -->
+    <script src='${APP_CONTEXT }/resources/admin/plugins/fastclick/fastclick.min.js'></script>
+    <!-- AdminLTE App -->
+    <script src="${APP_CONTEXT }/resources/admin/dist/js/app.min.js" type="text/javascript"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="${APP_CONTEXT }/resources/admin/dist/js/demo.js" type="text/javascript"></script>
+        <script src="${APP_CONTEXT }/resources/admin/js/gm-admin.js" type="text/javascript"></script>
+    <script src="${APP_CONTEXT }/resources/admin/js/gm-category.js" type="text/javascript"></script>
+    <!-- page script -->
+    <!-- <script type="text/javascript">
+      $(function () {
+    	    $("#example1").dataTable();
+        $('#example2').dataTable({
+          "bPaginate": true,
+          "bLengthChange": false,
+          "bFilter": false,
+          "bSort": true,
+          "bInfo": true,
+          "bAutoWidth": false
+        });
+      });
+    </script> -->

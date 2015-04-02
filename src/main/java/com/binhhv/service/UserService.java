@@ -21,4 +21,6 @@ public interface UserService {
 	    public Boolean activeUser(User user);
 	    
 	    public User activeUser(String code);
+	    
+	    public int getNumbersUser();
 }
