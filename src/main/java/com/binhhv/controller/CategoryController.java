@@ -72,6 +72,7 @@ public class CategoryController {
 		mv.addObject("categories", categoryService.getAllCategories());
 		return mv;
 	}
+	
 	@RequestMapping("/get/{categoryId}")
 	public String getBook(@PathVariable int categoryId, Map<String, Object> map) {
 

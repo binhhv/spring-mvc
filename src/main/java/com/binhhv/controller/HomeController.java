@@ -38,5 +38,13 @@ public class HomeController{
 		model.addAttribute("blogs", blogService.getAllBlogs());
 		return "index";
 	}
+	/*@RequestMapping(value ="/teo", method = RequestMethod.GET)
+	public String home1(Locale locale, Model model) {
+		logger.info("wellcome to index page", locale);
+		//model.addAttribute("styles",INDEX_CSS);
+		//model.addAttribute("scripts",INDEX_SCRIPT);
+		model.addAttribute("blogs", blogService.getAllBlogs());
+		return "teo";
+	}*/
 	
 }

@@ -13,8 +13,8 @@
 		/> <beans:bean id="userDetailsService" class="com.binhhv.serviceImpl.UserDetailsServiceImpl"></beans:bean> -->
 
 	<http use-expressions="true" auto-config="true">
-		<!-- <intercept-url pattern="/users**" access="hasRole('ROLE_ADMIN')" />
-		<intercept-url pattern="/users/**" access="hasRole('ROLE_ADMIN')" /> -->
+		<intercept-url pattern="/admin**" access="hasRole('ROLE_ADMIN')" />
+		<!-- <intercept-url pattern="/users/**" access="hasRole('ROLE_ADMIN')" /> -->
 		<!-- <intercept-url pattern="/account**" access="hasRole('ROLE_USER')" 
 			/> -->
 			<intercept-url pattern="/j_spring_security_check" access="permitAll"/>

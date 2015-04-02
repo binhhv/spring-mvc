@@ -110,4 +110,18 @@
  	<param-name>defaultHtmlEscape</param-name>
  	<param-value>true</param-value>
  </context-param>
+ 
+ <!-- Admin redirect -->
+	<servlet>
+		<servlet-name>admin-redirect</servlet-name>
+		<servlet-class>com.binhhv.servlet.AdminRedirectServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>admin-redirect</servlet-name>
+		<url-pattern>/admin</url-pattern>
+		<!-- <url-pattern>/admin/</url-pattern> -->
+	</servlet-mapping>
+	<!-- Admin redirect -->
+	
 </web-app>

@@ -35,4 +35,19 @@
 		<put-attribute name="body" value="/WEB-INF/views/404.jsp" />
 	</definition>
 	
+	<!-- admin -->
+	<definition name="admin.template" template="/WEB-INF/layout/admin/default.jsp">
+		<put-attribute name="title" value="Admin" />
+		<put-attribute name="menu" value="/WEB-INF/layout/admin/menu.jsp" />
+		<put-attribute name="nav" value="/WEB-INF/layout/admin/nav.jsp" />
+		<put-attribute name="content-header" value="/WEB-INF/layout/admin/content-header.jsp" />
+		<put-attribute name="footer" value="/WEB-INF/layout/admin/footer.jsp" />
+	</definition>
+
+	<definition name="admin.home" extends="admin.template">
+		<put-attribute name="title" value="Home Admin" />
+		<put-attribute name="content" value="/WEB-INF/views/admin/index.jsp" />
+	</definition>
+	
+	
 </tiles-definitions>
