@@ -8,9 +8,10 @@
 	
 });*/
  $(function () {
-       
+	 //$("#error-category").hide();  
 	 $("#table-category").dataTable();
-	 addCSSRule(".modal", 'position: :"absolute;"');
+	 //addCSSRule("#error-category", 'display: :"none;"');
+	 //$("#error-category").hide();
       });
 function deleteCategory(id){
 	//alert($("#category-delete-id-"+id).data("url"));
@@ -82,6 +83,7 @@ $(window).on("resize", function () {
 });*/
 function resetDialog(form) {
 
+	$('#error-category').css("display","none");
 	form.find("input[type=text]").val("");
 }
 

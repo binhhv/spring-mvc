@@ -16,7 +16,7 @@
 				</div>
 				<div class="modal-body">
 						<div class="error" id ="error-category"></div>
-					<spring:bind path="form">
+					<%-- <spring:bind path="form">
 						<c:if test="${status.error }">
 							<div class="error">
 								<c:forEach items="${status.errorMessages }" var="error">
@@ -24,7 +24,7 @@
 								</c:forEach>
 							</div>
 						</c:if>
-					</spring:bind>
+					</spring:bind> --%>
 					<div class="form-group">
 						<label for="InputName">Name</label>
 						<div class="input-group">
