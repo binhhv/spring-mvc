@@ -9,4 +9,10 @@
 	<definition name="categoryForm" extends="ajax.foo">
 	    <put-attribute name="form" value="/WEB-INF/views/form/formCategory.jsp"/>
 	</definition>
+	<definition name="admin.categoryForm" extends="ajax.foo">
+	    <put-attribute name="form" value="/WEB-INF/views/admin/form/formCategory.jsp"/>
+	</definition>
+	<definition name="admin.blogForm" extends="ajax.foo">
+	    <put-attribute name="form" value="/WEB-INF/views/admin/form/formBlog.jsp"/>
+	</definition>
 </tiles-definitions>

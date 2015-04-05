@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/layout/includes.jsp" %>
-<form role="form" name="form" action="" method="post" id="categoryForm-id">
+<form:form method="post" action="" id="categoryForm-id" modelAttribute="form">
+<!-- <form role="form" name="form" action="" method="post" id="categoryForm-id"> -->
 	<div class="modal fade modal-category" id="myModal" tabindex="-1"
 		role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
 		>
@@ -28,15 +29,20 @@
 					<div class="form-group">
 						<label for="InputName">Name</label>
 						<div class="input-group">
-							<input type="text" class="form-control" name="name" id="name"
+							<form:input path="name" cssClass="form-control" id="name" placeholder="Enter category name" />
+							 <span class="input-group-addon"><span
+								class="glyphicon glyphicon-asterisk"></span></span>
+							<%-- <input type="text" class="form-control" name="name" id="name"
 								value="${form.name}" placeholder="Enter Username" required
 								autofocus /> <span class="input-group-addon"><span
-								class="glyphicon glyphicon-asterisk"></span></span>
+								class="glyphicon glyphicon-asterisk"></span></span> --%>
 						</div>
 					</div>
 					<c:if test="${form.id != 0 }">
-						<input type="hidden" name="id" value="${form.id}"/>
-						<input type="hidden" name="tempName" value="${form.tempName}"/>
+						<form:hidden path="id"  />
+						<form:hidden path="tempName"/>
+						<%-- <input type="hidden" name="id" value="${form.id}"/>
+						<input type="hidden" name="tempName" value="${form.tempName}"/> --%>
 					</c:if>
 					
 				</div>
@@ -48,4 +54,5 @@
 			</div>
 		</div>
 	</div>
-</form>
+<!-- </form> -->
+</form:form>

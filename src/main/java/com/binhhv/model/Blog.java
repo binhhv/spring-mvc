@@ -41,7 +41,7 @@ public class Blog {
 	
 	@ManyToOne
 	@JoinColumn(name="category_id")
-	@NotFound(action=NotFoundAction.IGNORE)
+	/*@NotFound(action=NotFoundAction.IGNORE)*/
 	private Category category;
 
 	public int getId() {

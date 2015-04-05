@@ -13,6 +13,7 @@
  $(function () {
 	 //$("#error-category").hide();  
 	 $("#table-blog").dataTable();
+	 //$('#error-blog').css("display","none");
 	 //addCSSRule("#error-category", 'display: :"none;"');
 	 //$("#error-category").hide();
       });
@@ -65,11 +66,12 @@ function submitBlog(){
 }
 function editBlog(id) {
 
-	$.get("get/" + id+".html", function(result) {
+	$.get(getContextPath() +"/admin/blog/get/" + id+".html", function(result) {
 
 		$("#blogDialog").html(result);
+		$('#error-blog').css("display","none");
 		/*$('.modal').on('show.bs.modal', centerModal);*/
-		$('#"blogModal"').modal('show');	
+		$("#blogModal").modal('show');	
 	});
 }
 

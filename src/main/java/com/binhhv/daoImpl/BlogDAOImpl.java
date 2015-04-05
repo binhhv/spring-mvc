@@ -1,5 +1,6 @@
 package com.binhhv.daoImpl;
 
+import java.util.Date;
 import java.util.List;
 
 import org.hibernate.Criteria;
@@ -32,5 +33,17 @@ public class BlogDAOImpl implements BlogDAO {
 		criteria.add(Restrictions.eq("delete_flag", 0));
 		criteria.setProjection(Projections.rowCount());
 		return (Integer) criteria.uniqueResult();
+	}
+	@Override
+	public Blog findBlogById(int id){
+		return (Blog) sessionFactory.getCurrentSession().get(Blog.class, id);
+	}
+	
+	@Override
+	public void addBlog(Blog blog){
+		Date date = new Date();
+		blog.setCreated_at(date);
+		sessionFactory.getCurrentSession().save(blog);
+		
 	}
 }

@@ -35,7 +35,7 @@
 								onclick="editCategory(${category.id});">Edit</button> <%-- <a href="${APP_CONTEXT }/category/${category.id }.html?edit" class="btn btn-primary" >Edit</a> --%>
 							&nbsp;
 							<button id="category-delete-id-${category.id}"
-								data-url="${APP_CONTEXT }/category/delete/${category.id }.html"
+								data-url="${APP_CONTEXT }/admin/category/delete/${category.id }.html"
 								class="btn btn-danger" onclick="deleteCategory(${category.id});">Delete</button></td>
 					</tr>
 				</c:forEach>

@@ -71,13 +71,13 @@ public class AdminCategoryController {
 		return mv;
 	}
 	
-	@RequestMapping("/get/{categoryId}")
+	@RequestMapping("/category/get/{categoryId}")
 	public String getBook(@PathVariable int categoryId, Map<String, Object> map) {
 
 		//Book book = bookService.getBook(bookId);
 		Category category = categoryService.findCategoryById(categoryId);
 		map.put("form", new CategoryCreateForm(category));
-		return "categoryForm";
+		return "admin.categoryForm";
 	}
 	@RequestMapping(value="/category",headers="Accept=*/*",method=RequestMethod.POST)
 	public @ResponseBody JsonResponse  handleCategoryCreateForm(@Valid @ModelAttribute("form") CategoryCreateForm form,BindingResult bindingResult,Map<String, Object> map){

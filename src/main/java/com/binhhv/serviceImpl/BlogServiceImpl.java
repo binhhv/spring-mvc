@@ -27,5 +27,15 @@ public class BlogServiceImpl implements BlogService {
 	public int getNumbersBlog(){
 		return blogDAO.getNumbersBlog();
 	}
-
+	@Override
+	@Transactional
+	public Blog findBlogById(int id){
+		return blogDAO.findBlogById(id);
+	}
+	@Override
+	@Transactional
+	public void addBlog(Blog blog)
+	{
+		blogDAO.addBlog(blog);
+	}
 }

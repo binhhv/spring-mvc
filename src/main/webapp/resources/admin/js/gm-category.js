@@ -60,7 +60,7 @@ function submitCategory(){
 }
 function editCategory(id) {
 
-	$.get("get/" + id+".html", function(result) {
+	$.get(getContextPath()+"/admin/category/get/" + id+".html", function(result) {
 
 		$("#categoryDialog").html(result);
 		/*$('.modal').on('show.bs.modal', centerModal);*/

@@ -51,11 +51,11 @@
 	</definition>
 	
 	<definition name="admin.category" extends="admin.template">
-		<put-attribute name="title" value="Category" />
+		<put-attribute name="title" value="Category manager" />
 		<put-attribute name="content" value="/WEB-INF/views/admin/category.jsp" />
 	</definition>
 	<definition name="admin.blog" extends="admin.template">
-		<put-attribute name="title" value="Category" />
+		<put-attribute name="title" value="Blog manager" />
 		<put-attribute name="content" value="/WEB-INF/views/admin/blog.jsp" />
 	</definition>
 	
