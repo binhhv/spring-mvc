@@ -5,7 +5,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 import com.binhhv.model.Category;
 
 public class CategoryCreateForm {
-	@NotEmpty
+	
 	private String name="";
 
 	private int id;

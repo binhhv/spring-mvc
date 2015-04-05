@@ -13,6 +13,7 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.NotFound;
 import org.hibernate.annotations.NotFoundAction;
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Table(name="blog")
@@ -22,9 +23,11 @@ public class Blog {
 	private int id;
 	
 	@Column
+
 	private String title;
 	
 	@Column
+	
 	private String content;
 	
 	@Column

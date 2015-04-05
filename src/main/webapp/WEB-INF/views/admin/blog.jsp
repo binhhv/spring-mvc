@@ -7,7 +7,7 @@
 		
 		<div class="pull-right box-tools">
 			<button type="button" class="btn btn-primary btn-sm iframe cboxElement" data-toggle="modal"
-	data-target="#myModal" onclick="addCategory()">
+	data-target="#blogModal" onclick="addBlog()">
 				<span class="fa fa-plus-circle"></span> Create
 			</button>
 			<!-- <a href="#" onclick="oTable.fnReloadAjax()" class="btn btn-primary btn-sm"><i class="fa fa-refresh"></i></a> -->
@@ -15,7 +15,7 @@
 	</div>
 	<!-- /.box-header -->
 	<div class="box-body">
-		<table id="table-category" class="table table-bordered table-striped">
+		<table id="table-blog" class="table table-bordered table-striped">
 			<thead>
 				<tr>
 					<th width="50">No</th>
@@ -35,13 +35,13 @@
 						<td><c:out value="${blog.category.name }" /></td>
 						<td><c:out value="${blog.created_at }" /></td>
 						<td width="200"><button class="btn btn-success"
-								onclick="editCategory(${category.id});">View</button>&nbsp;
+								onclick="viewBlog(${blog.id});">View</button>&nbsp;
 						<button class="btn btn-primary"
-								onclick="editCategory(${category.id});">Edit</button> <%-- <a href="${APP_CONTEXT }/category/${category.id }.html?edit" class="btn btn-primary" >Edit</a> --%>
+								onclick="editBlog(${blog.id});">Edit</button> <%-- <a href="${APP_CONTEXT }/category/${category.id }.html?edit" class="btn btn-primary" >Edit</a> --%>
 							&nbsp;
-							<button id="category-delete-id-${category.id}"
-								data-url="${APP_CONTEXT }/category/delete/${category.id }.html"
-								class="btn btn-danger" onclick="deleteCategory(${category.id});">Delete</button></td>
+							<button id="category-delete-id-${blog.id}"
+								data-url="${APP_CONTEXT }/blog/delete/${blog.id }.html"
+								class="btn btn-danger" onclick="deleteBlog(${blog.id});">Delete</button></td>
 					</tr>
 				</c:forEach>
 			</tbody>
@@ -60,13 +60,13 @@
 	<!-- /.box-body -->
 </div>
 
-<%-- <div id="categoryDialog">
-			<%@ include file="form/formCategory.jsp" %>
-</div> --%>
+<div id="blogDialog">
+			<%@ include file="form/formBlog.jsp" %>
+</div>
 
 
 <!-- Modal -->
-<div class="modal fade" id="modalRemoveCategory" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="modalRemoveBlog" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -74,7 +74,7 @@
         <h4 class="modal-title" id="myModalLabel">Remove Category</h4>
       </div>
       <div class="modal-body">
-        Do you want to delete category ?
+        Do you want to delete blog ?
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Cance</button>

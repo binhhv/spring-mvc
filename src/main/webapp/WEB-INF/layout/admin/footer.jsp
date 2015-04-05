@@ -63,7 +63,10 @@
     <!-- AdminLTE for demo purposes -->
     <script src="${APP_CONTEXT }/resources/admin/dist/js/demo.js" type="text/javascript"></script>
         <script src="${APP_CONTEXT }/resources/admin/js/gm-admin.js" type="text/javascript"></script>
-    <script src="${APP_CONTEXT }/resources/admin/js/gm-category.js" type="text/javascript"></script>
+    <%-- <script src="${APP_CONTEXT }/resources/admin/js/gm-category.js" type="text/javascript"></script> --%>
+    <c:forEach items="${scripts }" var="script">
+	<script src="<c:out value="${APP_CONTEXT }/${script }" />"></script>
+	</c:forEach>
     <!-- page script -->
     <!-- <script type="text/javascript">
       $(function () {

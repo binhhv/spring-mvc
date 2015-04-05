@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.binhhv.contants.WebContants;
+import com.binhhv.contants.WebContantsAdmin;
 import com.binhhv.model.Category;
 import com.binhhv.model.json.JsonResponse;
 import com.binhhv.service.CategoryService;
@@ -66,6 +67,7 @@ public class AdminCategoryController {
 		else mv.addObject("success", 0);
 		mv.addObject("scripts", WebContants.CATEGORY_SCRIPT);
 		mv.addObject("categories", categoryService.getAllCategories());
+		mv.addObject("scripts", WebContantsAdmin.CATEGORY_SCRIPT);
 		return mv;
 	}
 	

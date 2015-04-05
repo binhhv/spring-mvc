@@ -6,10 +6,10 @@ import org.springframework.validation.Validator;
 
 import com.binhhv.service.UserService;
 
-@Component
-public class AdminUserCreateFormValidator implements Validator{
+//@Component
+public class AdminUserCreateFormValidator {
 
-	private UserService userService;
+	/*private UserService userService;
 	public AdminUserCreateFormValidator(UserService userService){
 		this.userService = userService;
 	}
@@ -23,7 +23,7 @@ public class AdminUserCreateFormValidator implements Validator{
 	public void validate(Object target, Errors errors) {
 		// TODO Auto-generated method stub
 		
-	}
+	}*/
 	
 	
 
