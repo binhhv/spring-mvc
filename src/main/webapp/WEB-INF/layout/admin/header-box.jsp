@@ -17,7 +17,7 @@
                 <span class="info-box-icon bg-red"><i class="fa fa-google-plus"></i></span>
                 <div class="info-box-content">
                   <span class="info-box-text">Users</span>
-                  <span class="info-box-number" id="numbers-user">41,410</span>
+                  <span class="info-box-number" id="numbers-user">---</span>
                 </div><!-- /.info-box-content -->
               </div><!-- /.info-box -->
             </div><!-- /.col -->
@@ -30,7 +30,7 @@
                 <span class="info-box-icon bg-green"><i class="ion ion-ios-cart-outline"></i></span>
                 <div class="info-box-content">
                   <span class="info-box-text">Blog</span>
-                  <span class="info-box-number" id="numbers-blog">760</span>
+                  <span class="info-box-number" id="numbers-blog">---</span>
                 </div><!-- /.info-box-content -->
               </div><!-- /.info-box -->
             </div><!-- /.col -->
@@ -39,7 +39,7 @@
                 <span class="info-box-icon bg-yellow"><i class="ion ion-ios-people-outline"></i></span>
                 <div class="info-box-content">
                   <span class="info-box-text">Category</span>
-                  <span class="info-box-number" id="numbers-category">2,000</span>
+                  <span class="info-box-number" id="numbers-category">---</span>
                 </div><!-- /.info-box-content -->
               </div><!-- /.info-box -->
             </div><!-- /.col -->

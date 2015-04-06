@@ -33,12 +33,12 @@ function submitCategory(){
 	
 	  $.ajax({  
 	    type: "POST",  
-	    url: getContextPath() + "/admin/category.html",  
+	    url: contextPath + "/admin/category.html",  
 	    data: form, 
 	    dataType: 'json',
 	    success: function(response){
 	    	if(response.status == "SUCCESS"){
-	    		window.location.href = getContextPath()+"/admin/category.html";
+	    		window.location.href = contextPath +"/admin/category.html";
 	    	}
 	    	else{
 	    		
@@ -60,7 +60,7 @@ function submitCategory(){
 }
 function editCategory(id) {
 
-	$.get(getContextPath()+"/admin/category/get/" + id+".html", function(result) {
+	$.get(contextPath +"/admin/category/get/" + id+".html", function(result) {
 
 		$("#categoryDialog").html(result);
 		/*$('.modal').on('show.bs.modal', centerModal);*/

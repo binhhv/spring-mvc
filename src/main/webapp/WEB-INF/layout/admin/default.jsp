@@ -10,6 +10,7 @@
     <%@ include file="styles.jsp" %>
   </head>
   <body class="skin-blue">
+  
     <div class="wrapper">
       
       <header class="main-header">

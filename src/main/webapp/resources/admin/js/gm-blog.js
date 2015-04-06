@@ -37,13 +37,13 @@ function submitBlog(){
 	
 	  $.ajax({  
 	    type: "POST",  
-	    url: getContextPath() + "/admin/blog.html",  
+	    url: contextPath + "/admin/blog.html",  
 	    data: form, 
 	    dataType: 'json',
 	    success: function(response){
 	    	if(response.status == "SUCCESS"){
 	    		
-	    		window.location.href = getContextPath()+"/admin/blog.html";
+	    		window.location.href = contextPath +"/admin/blog.html";
 	    		
 	    	}
 	    	else{
@@ -66,7 +66,7 @@ function submitBlog(){
 }
 function editBlog(id) {
 
-	$.get(getContextPath() +"/admin/blog/get/" + id+".html", function(result) {
+	$.get(contextPath +"/admin/blog/get/" + id+".html", function(result) {
 
 		$("#blogDialog").html(result);
 		$('#error-blog').css("display","none");

@@ -2,7 +2,7 @@
 
 	(function worker() {
 		  $.ajax({
-		    url: getContextPath()+'/admin/getParameter.html', 
+		    url: contextPath +'/admin/getParameter.html', 
 		    type: "GET",  
 		    dataType: 'json',
 		    success: function(data) {

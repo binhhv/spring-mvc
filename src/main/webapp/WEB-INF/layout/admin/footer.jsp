@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/layout/includes.jsp" %>
+<script type="text/javascript">
+		var contextPath="${pageContext.request.contextPath}";
+	</script>
 <!-- jQuery 2.1.3 -->
     <%-- <script src="${APP_CONTEXT }/resources/admin/plugins/jQuery/jQuery-2.1.3.min.js"></script>
     <!-- jQuery UI 1.11.2 -->
@@ -81,3 +84,4 @@
         });
       });
     </script> -->
+    
