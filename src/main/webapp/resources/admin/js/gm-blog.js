@@ -22,7 +22,7 @@ function deleteBlog(id){
 	 $("#modalRemoveBlog").modal('show');
 	 $("#modalRemoveBlog a.removeBtn").on("click", function(e) {
 		 //alert($("#category-delete-id-"+id).data("url"));
-		 $("#modalRemoveBlog a.removeBtn").attr("href",$("#category-delete-id-"+id).data("url"));
+		 $("#modalRemoveBlog a.removeBtn").attr("href",$("#blog-delete-id-"+id).data("url"));
          //alert($("#modalRemoveCategory a.removeBtn").attr("href"));
 		 //$("#modalRemoveCategory").modal('hide');     // dismiss the dialog
      });

@@ -38,4 +38,10 @@ public class BlogServiceImpl implements BlogService {
 	{
 		blogDAO.addBlog(blog);
 	}
+	
+	@Override
+	@Transactional
+	public void deleteBlog(int id){
+		blogDAO.deleteBlog(id);
+	}
 }

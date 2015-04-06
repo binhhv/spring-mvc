@@ -1,6 +1,7 @@
 package com.binhhv.controller.admin;
 
 import java.beans.PropertyEditorSupport;
+import java.lang.ProcessBuilder.Redirect;
 import java.util.Collection;
 import java.util.Map;
 
@@ -10,6 +11,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomCollectionEditor;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
@@ -95,5 +97,12 @@ public class AdminBlogController {
 		map.put("form", blog);
 		map.put("categories", categoryService.getAllCategories());
 		return "admin.blogForm";
+	}
+	
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
+	@RequestMapping("/blog/delete/{blogId}")
+	public String deleteBlog(@PathVariable("blogId") int blogId){
+		blogService.deleteBlog(blogId);
+		return "redirect:/admin/blog.html";
 	}
 }

@@ -13,4 +13,6 @@ public interface BlogService {
 	public Blog findBlogById(int id);
 	
 	public void addBlog(Blog blog);
+	
+	public void deleteBlog(int id);
 }

@@ -39,8 +39,8 @@
 						<button class="btn btn-primary"
 								onclick="editBlog(${blog.id});">Edit</button> <%-- <a href="${APP_CONTEXT }/category/${category.id }.html?edit" class="btn btn-primary" >Edit</a> --%>
 							&nbsp;
-							<button id="category-delete-id-${blog.id}"
-								data-url="${APP_CONTEXT }/blog/delete/${blog.id }.html"
+							<button id="blog-delete-id-${blog.id}"
+								data-url="${APP_CONTEXT }/admin/blog/delete/${blog.id }.html"
 								class="btn btn-danger" onclick="deleteBlog(${blog.id});">Delete</button></td>
 					</tr>
 				</c:forEach>
