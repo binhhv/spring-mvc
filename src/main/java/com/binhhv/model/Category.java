@@ -26,6 +26,9 @@ public class Category {
 	private Date created_at;
 	
 	@Column
+	private Date updated_at;
+	
+	@Column
 	private int delete_flag;
 	
 	@OneToMany
@@ -38,12 +41,13 @@ public class Category {
 		
 	}
 	
-	public Category(int id, String name, Date created_at, int delete_flag,
+	public Category(int id, String name, Date created_at, Date updated_at,int delete_flag,
 			List<Blog> blogs) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.created_at = created_at;
+		this.updated_at = updated_at;
 		this.delete_flag = delete_flag;
 		this.blogs = blogs;
 	}
@@ -86,6 +90,14 @@ public class Category {
 
 	public void setBlogs(List<Blog> blogs) {
 		this.blogs = blogs;
+	}
+
+	public Date getUpdated_at() {
+		return updated_at;
+	}
+
+	public void setUpdated_at(Date updated_at) {
+		this.updated_at = updated_at;
 	}
 	
 	

@@ -34,6 +34,9 @@ public class Blog {
 	private Date created_at;
 	
 	@Column
+	private Date updated_at;
+	
+	@Column
 	private int views;
 	
 	@Column
@@ -99,6 +102,15 @@ public class Blog {
 	public void setCategory(Category category) {
 		this.category = category;
 	}
+
+	public Date getUpdated_at() {
+		return updated_at;
+	}
+
+	public void setUpdated_at(Date updated_at) {
+		this.updated_at = updated_at;
+	}
+	
 	
 	
 

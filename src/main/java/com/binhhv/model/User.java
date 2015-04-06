@@ -43,7 +43,7 @@ public class User {
 	@Column
 	private Date updated_at;
 	@Column
-	private int disabled_flag;
+	private int disable_flag;
 	@Column
 	private int delete_flag;
 	
@@ -116,11 +116,11 @@ public class User {
 		this.updated_at = updated_at;
 	}
 	
-	public int getDisabled_flag() {
-		return disabled_flag;
+	public int getDisable_flag() {
+		return disable_flag;
 	}
-	public void setDisabled_flag(int disabled_flag) {
-		this.disabled_flag = disabled_flag;
+	public void setDisable_flag(int disabled_flag) {
+		this.disable_flag = disabled_flag;
 	}
 	public int getDelete_flag() {
 		return delete_flag;
@@ -143,7 +143,7 @@ public class User {
 		this.status = status;
 		this.created_at = created_at;
 		this.updated_at = updated_at;
-		this.disabled_flag = disabled_flag;
+		this.disable_flag = disabled_flag;
 		this.delete_flag = delete_flag;
 		this.roles = roles;
 	}
