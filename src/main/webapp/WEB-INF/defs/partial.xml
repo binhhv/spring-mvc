@@ -15,4 +15,7 @@
 	<definition name="admin.blogForm" extends="ajax.foo">
 	    <put-attribute name="form" value="/WEB-INF/views/admin/form/formBlog.jsp"/>
 	</definition>
+	<definition name="admin.userForm" extends="ajax.foo">
+	    <put-attribute name="form" value="/WEB-INF/views/admin/form/formUser.jsp"/>
+	</definition>
 </tiles-definitions>

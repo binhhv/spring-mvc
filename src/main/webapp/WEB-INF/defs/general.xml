@@ -58,5 +58,8 @@
 		<put-attribute name="title" value="Blog manager" />
 		<put-attribute name="content" value="/WEB-INF/views/admin/blog.jsp" />
 	</definition>
-	
+	<definition name="admin.user" extends="admin.template">
+		<put-attribute name="title" value="User manager" />
+		<put-attribute name="content" value="/WEB-INF/views/admin/user.jsp" />
+	</definition>
 </tiles-definitions>
